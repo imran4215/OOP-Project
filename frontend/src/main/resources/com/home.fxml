@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+    <!-- Include Header -->
+    <top>
+        <!-- <fx:include source="../componenets/home/navbar.fxml"/> -->
+        <fx:include source="navbar.fxml"/>
+    </top>
+    
+    <!-- Include Footer -->
+    <bottom>
+        <fx:include source="footer.fxml"/>
+    </bottom>
+</BorderPane>

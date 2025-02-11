@@ -1,0 +1,86 @@
+/* Footer Styling */
+#footer {
+  -fx-background-color: #121921;
+  -fx-padding: 40 100 20 100; /* Increased horizontal padding for full-screen */
+  -fx-spacing: 40;
+}
+
+/* Newsletter Section */
+.newsletter {
+  -fx-spacing: 20;
+  -fx-alignment: center;
+  -fx-padding: 20;
+  -fx-background-color: rgba(255, 255, 255, 0.1);
+  -fx-background-radius: 10;
+  -fx-max-width: 1200px; /* Limit width for better readability */
+  -fx-alignment: center;
+}
+
+.newsletter-text {
+  -fx-text-fill: white;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+.email-field {
+  -fx-pref-width: 400px; /* Wider input field for full-screen */
+  -fx-background-radius: 5;
+  -fx-padding: 10;
+  -fx-font-size: 16px;
+  -fx-background-color: #ffffff;
+  -fx-text-fill: #121921;
+}
+
+.subscribe-button {
+  -fx-background-color: #ff6f61;
+  -fx-text-fill: white;
+  -fx-font-weight: bold;
+  -fx-background-radius: 5;
+  -fx-padding: 10 30;
+  -fx-font-size: 16px;
+  -fx-cursor: hand;
+}
+
+.subscribe-button:hover {
+  -fx-background-color: #ff4a3d;
+}
+
+/* Footer Content */
+.footer-content {
+  -fx-hgap: 80; /* Increased horizontal gap for full-screen */
+  -fx-vgap: 20;
+  -fx-alignment: center;
+  -fx-max-width: 1400px; /* Limit width for better readability */
+}
+
+.footer-section {
+  -fx-spacing: 10;
+  -fx-alignment: center-left;
+}
+
+.footer-heading {
+  -fx-text-fill: white;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+  -fx-padding: 0 0 15 0;
+}
+
+.footer-text {
+  -fx-text-fill: #b0b0b0;
+  -fx-font-size: 16px;
+  -fx-cursor: hand;
+}
+
+.footer-text:hover {
+  -fx-text-fill: #ffffff;
+}
+
+/* App Download Section */
+.app-download {
+  -fx-spacing: 20;
+  -fx-alignment: center;
+}
+
+ImageView {
+  -fx-cursor: hand;
+}

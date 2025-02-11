@@ -1,0 +1,84 @@
+/* General Styles */
+.root {
+  -fx-font-family: "Arial";
+  -fx-background-color: #f7f9fc; /* Lighter gray background for a softer look */
+}
+
+/* Title Style */
+.title {
+  -fx-font-size: 40px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2b3a42; /* Darker shade of blue-gray */
+  -fx-padding: 0 0 30 0;
+  -fx-transition: all 0.3s ease;
+}
+
+/* Card Style */
+.card {
+  -fx-background-color: #ffffff;
+  -fx-border-radius: 12;
+  -fx-background-radius: 12;
+  -fx-padding: 25;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 12, 0, 0, 6);
+  -fx-transition: all 0.3s ease;
+}
+
+.card:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 18, 0, 0, 8);
+  -fx-translate-y: -8;
+}
+
+/* Section Heading Style */
+.section-heading {
+  -fx-font-size: 22px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2c3e50;
+}
+
+/* Contact Text Style */
+.contact-text {
+  -fx-font-size: 18px;
+  -fx-text-fill: #607d8b; /* Slightly lighter gray */
+}
+
+/* Input Field Style */
+.input-field {
+  -fx-font-size: 16px;
+  -fx-padding: 12;
+  -fx-border-color: #b0bec5;
+  -fx-border-radius: 6;
+  -fx-background-radius: 6;
+  -fx-pref-width: 320px;
+  -fx-background-color: #f1f8f6;
+}
+
+.input-field:focused {
+  -fx-border-color: #00695c;
+  -fx-border-width: 2px;
+}
+
+/* Primary Button Style */
+.primary-button {
+  -fx-background-color: #00796b; /* Darker teal */
+  -fx-text-fill: white;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-padding: 14 32;
+  -fx-background-radius: 6;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 0, 3, 6, 0);
+}
+
+/* Button Hover Style */
+.primary-button:hover {
+  -fx-background-color: #004d40; /* Darker teal on hover */
+  -fx-transform: scale(1.05); /* Slight scale effect */
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(0, 0, 0, 0.15),
+    0,
+    4,
+    8,
+    0
+  ); /* Balanced shadow */
+}

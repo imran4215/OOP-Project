@@ -1,0 +1,64 @@
+/* General Styles */
+.root {
+  -fx-font-family: "Arial";
+  -fx-background-color: #fafafa;
+}
+
+/* Title Style */
+.title {
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2c3e50;
+  -fx-padding: 0 0 20 0;
+}
+
+/* Input Label Style */
+.input-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #546e7a;
+  -fx-font-weight: bold;
+}
+
+/* Input Field Style */
+.input-field {
+  -fx-font-size: 14px;
+  -fx-padding: 10;
+  -fx-border-color: #bdbdbd;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-pref-width: 300px;
+  -fx-background-color: #ffffff;
+}
+
+.input-field:focused {
+  -fx-border-color: #00695c;
+  -fx-border-width: 2px;
+}
+
+/* Primary Button Style */
+.primary-button {
+  -fx-background-color: #00695c;
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-padding: 12 30;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+  -fx-transition: background-color 0.3s ease;
+}
+
+.primary-button:hover {
+  -fx-background-color: #004d40;
+}
+
+/* Link Label Style */
+.link-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #00695c;
+  -fx-cursor: hand;
+  -fx-underline: true;
+}
+
+.link-label:hover {
+  -fx-text-fill: #004d40;
+}

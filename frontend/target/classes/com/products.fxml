@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="@styles/productsStyle.css">
+    
+    <!-- Top Section: Category List -->
+    <top>
+        <HBox spacing="20" styleClass="category-bar">
+            <Label text="FASHION" styleClass="category-label"/>
+            <Label text="ELECTRONICS" styleClass="category-label"/>
+            <Label text="BAGS" styleClass="category-label"/>
+            <Label text="FOOTWEAR" styleClass="category-label"/>
+            <Label text="GROCERIES" styleClass="category-label"/>
+            <Label text="BEAUTY" styleClass="category-label"/>
+            <Label text="WELLNESS" styleClass="category-label"/>
+            <Label text="JEWELLERY" styleClass="category-label"/>
+        </HBox>
+    </top>
+    
+    <!-- Center Section: Product Cards -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <GridPane hgap="20" vgap="20" alignment="CENTER" styleClass="grid-pane">
+                <VBox styleClass="product-card">
+                    <ImageView fitWidth="250" fitHeight="150" preserveRatio="true">
+                        <image>
+                            <Image url="@images/1.jpg"/>
+                        </image>
+                    </ImageView>
+                    <VBox spacing="5" styleClass="product-details">
+                        <Label text="Product Name" styleClass="product-name"/>
+                        <Label text="Product description goes here." styleClass="product-description"/>
+                        <!-- <HBox spacing="10">
+                            <Label text="$20.00" styleClass="product-price"/>
+                            <Label text="$25.00" styleClass="product-original-price"/>
+                            <Label text="20% off" styleClass="product-discount"/>
+                        </HBox> -->
+                    </VBox>
+                </VBox>
+            </GridPane>
+        </ScrollPane>
+    </center>
+</BorderPane>

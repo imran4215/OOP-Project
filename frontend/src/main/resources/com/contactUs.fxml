@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/contactUsStyle.css">
+    <!-- Include Header -->
+    <top>
+        <fx:include source="navbar.fxml" />
+    </top>
+
+    <!-- Contact Us Page Content and Footer -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="NEVER" vbarPolicy="ALWAYS">
+            <VBox spacing="50" alignment="CENTER">
+                <!-- Title -->
+                <Label text="Contact Us" styleClass="title" />
+
+                <!-- Contact Information and Form Cards -->
+                <HBox spacing="60" alignment="CENTER">
+                    <!-- Contact Details Card -->
+                    <VBox styleClass="card" spacing="25" alignment="CENTER_LEFT">
+                        <Label text="Get in Touch" styleClass="section-heading" />
+                        <VBox spacing="15">
+                            <Label text="📞 Phone: +91-987654321" styleClass="contact-text" />
+                            <Label text="✉ Email: Demo@Exampledemo.Com" styleClass="contact-text" />
+                            <Label text="📍 Address: No. 1259 Freedom, New York, 11111" styleClass="contact-text" />
+                        </VBox>
+                    </VBox>
+
+                    <!-- Contact Form Card -->
+                    <VBox styleClass="card" spacing="25" alignment="CENTER_LEFT">
+                        <Label text="Send Us a Message" styleClass="section-heading" />
+                        <VBox spacing="15">
+                            <TextField promptText="Your Name" styleClass="input-field" />
+                            <TextField promptText="Your Email" styleClass="input-field" />
+                            <TextArea promptText="Your Message" styleClass="input-field" wrapText="true" />
+                            <Button text="Send Message" styleClass="primary-button" />
+                        </VBox>
+                    </VBox>
+                </HBox>
+
+                <!-- Include Footer Inside the Scrollable Area -->
+                <Region prefHeight="100" style="-fx-background-color: transparent;" />
+                <fx:include source="footer.fxml" />
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

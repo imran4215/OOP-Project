@@ -1,0 +1,64 @@
+/* General Styles */
+.root {
+  -fx-font-family: "Arial";
+  -fx-background-color: #fafafa; /* Light background for the entire scene */
+}
+
+/* Title Style */
+.title {
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #2c3e50; /* Dark blue-gray for contrast */
+  -fx-padding: 0 0 20 0;
+}
+
+/* Input Label Style */
+.input-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #546e7a; /* Medium gray for labels */
+  -fx-font-weight: bold;
+}
+
+/* Input Field Style */
+.input-field {
+  -fx-font-size: 14px;
+  -fx-padding: 10;
+  -fx-border-color: #bdbdbd; /* Light gray border */
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-pref-width: 300px; /* Fixed width for consistency */
+  -fx-background-color: #ffffff; /* White background for inputs */
+}
+
+.input-field:focused {
+  -fx-border-color: #00695c; /* Teal border on focus */
+  -fx-border-width: 2px;
+}
+
+/* Primary Button Style */
+.primary-button {
+  -fx-background-color: #00695c; /* Teal background */
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-padding: 12 30;
+  -fx-background-radius: 5;
+  -fx-cursor: hand;
+  -fx-transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.primary-button:hover {
+  -fx-background-color: #004d40; /* Darker teal on hover */
+}
+
+/* Link Label Style */
+.link-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #00695c; /* Teal color for links */
+  -fx-cursor: hand;
+  -fx-underline: true;
+}
+
+.link-label:hover {
+  -fx-text-fill: #004d40; /* Darker teal on hover */
+}

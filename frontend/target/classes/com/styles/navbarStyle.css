@@ -1,0 +1,112 @@
+/* Top Bar */
+#top-bar {
+  -fx-background-color: #1a1a1a;
+  -fx-padding: 8px 20px;
+}
+
+#shipping-label,
+#hotline-label {
+  -fx-text-fill: white;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+}
+
+/* Main Navbar */
+#navbar-main {
+  -fx-background-color: #0d0d0d;
+  -fx-padding: 15px 20px;
+}
+
+#brand-logo {
+  -fx-text-fill: white;
+  -fx-font-size: 28px;
+  -fx-font-weight: bold;
+  -fx-font-family: "Arial";
+  -fx-cursor: hand;
+}
+
+#brand-logo:hover {
+  -fx-text-fill: #ff9900;
+}
+
+#search-container {
+  -fx-alignment: CENTER;
+}
+
+#search-field {
+  -fx-pref-width: 300px;
+  -fx-padding: 8px;
+  -fx-background-radius: 5px;
+  -fx-border-color: #444;
+  -fx-border-radius: 5px;
+  -fx-background-color: #fff;
+  -fx-font-size: 14px;
+}
+
+#search-button {
+  -fx-background-color: #ff9900;
+  -fx-text-fill: white;
+  -fx-background-radius: 5px;
+  -fx-padding: 8px 12px;
+  -fx-cursor: hand;
+  -fx-font-weight: bold;
+}
+
+#search-button:hover {
+  -fx-background-color: #e68a00;
+}
+
+#action-buttons .button {
+  -fx-text-fill: white;
+  -fx-background-color: transparent;
+  -fx-font-size: 14px;
+  -fx-cursor: hand;
+}
+
+#action-buttons .button:hover {
+  -fx-text-fill: #ff9900;
+}
+
+/* Bottom Navbar */
+#bottom-navbar {
+  -fx-background-color: #0a0a0a;
+  -fx-padding: 10px 20px;
+}
+
+#categories-btn {
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-background-color: transparent;
+  -fx-padding: 8px 15px;
+  -fx-cursor: hand;
+}
+
+#categories-btn:hover {
+  -fx-background-color: #333;
+}
+
+.nav-btn {
+  -fx-text-fill: white;
+  -fx-background-color: transparent;
+  -fx-font-size: 14px;
+  -fx-padding: 8px 12px;
+  -fx-cursor: hand;
+}
+
+.nav-btn:hover {
+  -fx-text-fill: #ff9900;
+}
+
+.cart-button {
+  -fx-font-size: 18px; /* Adjust the overall font size */
+}
+
+.cart-button .text {
+  -fx-font-size: 24px; /* Adjust the font size for the symbol itself */
+}
+
+.scroll-bar {
+  -fx-scroll-bar-fade-unit: 10ms;
+  -fx-scroll-bar-fade-duration: 100ms;
+  -fx-scroll-bar-width: 10px;
+}

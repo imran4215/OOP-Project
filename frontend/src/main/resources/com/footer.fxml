@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="footer" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@styles/footerStyle.css">
+    <!-- Newsletter Signup -->
+    <HBox styleClass="newsletter">
+        <Label text="✉ Sign Up For Newsletter" styleClass="newsletter-text"/>
+        <TextField fx:id="emailField" promptText="Your Email" styleClass="email-field"/>
+        <Button text="SUBSCRIBE" styleClass="subscribe-button"/>
+    </HBox>
+
+    <!-- Footer Content -->
+    <GridPane styleClass="footer-content">
+        <!-- Contact Info -->
+        <VBox GridPane.columnIndex="0" styleClass="footer-section">
+            <Label text="Contact Us" styleClass="footer-heading"/>
+            <Label text="Demo Store" styleClass="footer-text"/>
+            <Label text="No. 1259 Freedom, New York, 11111" styleClass="footer-text"/>
+            <Label text="United States" styleClass="footer-text"/>
+            <Label text="+91-987654321" styleClass="footer-text"/>
+            <Label text="Demo@Exampledemo.Com" styleClass="footer-text"/>
+        </VBox>
+
+        <!-- Information Links -->
+        <VBox GridPane.columnIndex="1" styleClass="footer-section">
+            <Label text="Information" styleClass="footer-heading"/>
+            <Label text="Privacy Policy" styleClass="footer-text"/>
+            <Label text="Refund Policy" styleClass="footer-text"/>
+            <Label text="Shipping Policy" styleClass="footer-text"/>
+            <Label text="Terms Of Service" styleClass="footer-text"/>
+            <Label text="Blogs" styleClass="footer-text"/>
+        </VBox>
+
+        <!-- Account Links -->
+        <VBox GridPane.columnIndex="2" styleClass="footer-section">
+            <Label text="Account" styleClass="footer-heading"/>
+            <Label text="Search" styleClass="footer-text"/>
+            <Label text="About Us" styleClass="footer-text"/>
+            <Label text="FAQ" styleClass="footer-text"/>
+            <Label text="Contact" styleClass="footer-text"/>
+            <Label text="Size Chart" styleClass="footer-text"/>
+        </VBox>
+
+        <!-- Quick Links -->
+        <VBox GridPane.columnIndex="3" styleClass="footer-section">
+            <Label text="Quick Links" styleClass="footer-heading"/>
+            <Label text="Accessories" styleClass="footer-text"/>
+            <Label text="Laptops" styleClass="footer-text"/>
+            <Label text="Headphones" styleClass="footer-text"/>
+            <Label text="Smart Watches" styleClass="footer-text"/>
+            <Label text="Tablets" styleClass="footer-text"/>
+        </VBox>
+
+        <!-- App Download -->
+        <VBox GridPane.columnIndex="4" styleClass="footer-section">
+            <Label text="Our App" styleClass="footer-heading"/>
+            <Label text="Download our App and get extra 15% Discount on your first Order..!" styleClass="footer-text"/>
+            <HBox styleClass="app-download">
+                <ImageView fitWidth="150" fitHeight="50">
+                    <Image url="@google-play.png"/>
+                </ImageView>
+                <ImageView fitWidth="150" fitHeight="50">
+                    <Image url="@app-store.png"/>
+                </ImageView>
+            </HBox>
+        </VBox>
+    </GridPane>
+</VBox>
