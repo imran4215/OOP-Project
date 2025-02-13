@@ -1,0 +1,50 @@
+import axios from "axios";
+import Product from "../models/product.model.js";
+import { scrapeAndSort } from "../scrapers/scrapeAndSort.js";
+
+export const saveAllProducts = async (req, res) => {
+  try {
+    const { data } = await axios.get(
+      "https://fakestoreapi.com/products?limit=3"
+    );
+
+    data.map(async (product) => {
+      const newProduct = new Product({
+        title: product.title,
+        description: product.description,
+        price: product.price,
+        imageUrl: product.image,
+        category: product.category,
+      });
+      await newProduct.save();
+    });
+
+    res.status(200).json(data);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getAllProducts = async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.status(200).json(products);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getProductsBySearch = async (req, res) => {
+  const { query } = req.query;
+
+  if (!query) {
+    return res.status(400).json({ error: "Search query is required" });
+  }
+
+  try {
+    const results = await scrapeAndSort(query);
+    res.json(results);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching products" });
+  }
+};

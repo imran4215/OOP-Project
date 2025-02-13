@@ -105,3 +105,92 @@
   -fx-text-fill: #28a745;
   -fx-font-weight: bold;
 }
+
+.scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.grid-pane {
+  -fx-padding: 20px;
+}
+
+.product-card {
+  -fx-padding: 10px;
+  -fx-background-color: #f9f9f9;
+  -fx-border-color: #ddd;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 0);
+}
+
+.product-name {
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+}
+
+.product-description {
+  -fx-font-size: 14px;
+  -fx-text-fill: #666;
+}
+
+/* Style the product card */
+.product-card {
+  -fx-background-color: #f9f9f9; /* Light gray background */
+  -fx-border-radius: 10; /* Rounded corners */
+  -fx-padding: 10; /* Padding around content */
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(0, 0, 0, 0.1),
+    5,
+    0.5,
+    0,
+    2
+  ); /* Shadow effect */
+  -fx-min-width: 250px;
+  -fx-pref-width: 250px;
+  -fx-alignment: center; /* Center the content inside the VBox */
+}
+
+/* Style for the product name */
+.product-name {
+  -fx-font-size: 16px; /* Font size for the title */
+  -fx-font-weight: bold; /* Bold font */
+  -fx-text-fill: #333; /* Dark text color */
+}
+
+/* Style for the product description */
+.product-description {
+  -fx-font-size: 14px; /* Font size for the description */
+  -fx-text-fill: #666; /* Gray text color */
+}
+
+/* Style for the product image */
+.product-card .image-view {
+  -fx-border-radius: 5; /* Rounded corners for image */
+}
+
+/* Add hover effect */
+.product-card:hover {
+  -fx-background-color: #f0f0f0; /* Light hover effect */
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(0, 0, 0, 0.2),
+    8,
+    0.5,
+    0,
+    2
+  ); /* Stronger shadow on hover */
+}
+
+.product-card .image-view {
+  -fx-background-radius: 10; /* Round corners of image */
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(0, 0, 0, 0.2),
+    5,
+    0.5,
+    0,
+    1
+  ); /* Shadow around the image */
+}

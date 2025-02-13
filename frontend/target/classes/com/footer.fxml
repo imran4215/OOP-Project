@@ -18,11 +18,11 @@
         <!-- Contact Info -->
         <VBox GridPane.columnIndex="0" styleClass="footer-section">
             <Label text="Contact Us" styleClass="footer-heading"/>
-            <Label text="Demo Store" styleClass="footer-text"/>
-            <Label text="No. 1259 Freedom, New York, 11111" styleClass="footer-text"/>
-            <Label text="United States" styleClass="footer-text"/>
-            <Label text="+91-987654321" styleClass="footer-text"/>
-            <Label text="Demo@Exampledemo.Com" styleClass="footer-text"/>
+            <Label text="MIST MART" styleClass="footer-text"/>
+            <Label text="MIST,Mirpur Cantontmant,Dhaka-1206" styleClass="footer-text"/>
+            <Label text="Bangladesh" styleClass="footer-text"/>
+            <Label text="+880 1750-249899" styleClass="footer-text"/>
+            <Label text="mistmart@gmail.Com" styleClass="footer-text"/>
         </VBox>
 
         <!-- Information Links -->

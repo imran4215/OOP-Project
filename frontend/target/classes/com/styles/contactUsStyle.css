@@ -1,14 +1,14 @@
 /* General Styles */
 .root {
   -fx-font-family: "Arial";
-  -fx-background-color: #f7f9fc; /* Lighter gray background for a softer look */
+  -fx-background-color: #f7f9fc;
 }
 
 /* Title Style */
 .title {
   -fx-font-size: 40px;
   -fx-font-weight: bold;
-  -fx-text-fill: #2b3a42; /* Darker shade of blue-gray */
+  -fx-text-fill: #2b3a42;
   -fx-padding: 0 0 30 0;
   -fx-transition: all 0.3s ease;
 }
@@ -38,7 +38,7 @@
 /* Contact Text Style */
 .contact-text {
   -fx-font-size: 18px;
-  -fx-text-fill: #607d8b; /* Slightly lighter gray */
+  -fx-text-fill: #607d8b;
 }
 
 /* Input Field Style */
@@ -59,7 +59,7 @@
 
 /* Primary Button Style */
 .primary-button {
-  -fx-background-color: #00796b; /* Darker teal */
+  -fx-background-color: #00796b;
   -fx-text-fill: white;
   -fx-font-size: 18px;
   -fx-font-weight: bold;
@@ -71,14 +71,7 @@
 
 /* Button Hover Style */
 .primary-button:hover {
-  -fx-background-color: #004d40; /* Darker teal on hover */
-  -fx-transform: scale(1.05); /* Slight scale effect */
-  -fx-effect: dropshadow(
-    gaussian,
-    rgba(0, 0, 0, 0.15),
-    0,
-    4,
-    8,
-    0
-  ); /* Balanced shadow */
+  -fx-background-color: #004d40;
+  -fx-transform: scale(1.05);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 0, 4, 8, 0);
 }

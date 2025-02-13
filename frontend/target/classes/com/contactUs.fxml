@@ -22,9 +22,9 @@
                     <VBox styleClass="card" spacing="25" alignment="CENTER_LEFT">
                         <Label text="Get in Touch" styleClass="section-heading" />
                         <VBox spacing="15">
-                            <Label text="📞 Phone: +91-987654321" styleClass="contact-text" />
-                            <Label text="✉ Email: Demo@Exampledemo.Com" styleClass="contact-text" />
-                            <Label text="📍 Address: No. 1259 Freedom, New York, 11111" styleClass="contact-text" />
+                            <Label text="📞 Phone: +880 1750-249899" styleClass="contact-text" />
+                            <Label text="✉ Email: mistmart@gmail.com" styleClass="contact-text" />
+                            <Label text="📍 Address: MIST,Mirpur Cantontmant,Dhaka-1206" styleClass="contact-text" />
                         </VBox>
                     </VBox>
 

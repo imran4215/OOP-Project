@@ -98,11 +98,11 @@
 }
 
 .cart-button {
-  -fx-font-size: 18px; /* Adjust the overall font size */
+  -fx-font-size: 18px;
 }
 
 .cart-button .text {
-  -fx-font-size: 24px; /* Adjust the font size for the symbol itself */
+  -fx-font-size: 24px;
 }
 
 .scroll-bar {
