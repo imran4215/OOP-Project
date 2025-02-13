@@ -1,5 +1,5 @@
 async function scrapeAndSort(query) {
-  const products = await scrapeAllSites(query);
+  const products = await scrapAllSites(query);
 
   // Group by product name
   const groupedProducts = {};

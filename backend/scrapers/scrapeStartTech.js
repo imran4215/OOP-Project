@@ -1,30 +1,32 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+// import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 
 async function scrapeStartTech(query) {
   const url = `https://www.startech.com.bd/product/search?search=${query}`;
-  const products = [];
 
   try {
     const { data } = await axios.get(url);
-    const $ = cheerio.load(data);
+    const $ = cheerio.load(data); // Load the HTML data with Cheerio
 
-    $(".p-item").each((_, element) => {
-      const name = $(element).find(".p-item-name a").text().trim();
-      const price = parseFloat(
-        $(element)
-          .find(".price")
-          .text()
-          .replace(/[^0-9.]/g, "")
-      );
-      const link = $(element).find(".p-item-name a").attr("href");
+    // Extract product names with the class 'p-item-name'
+    const products = [];
+    $(".p-item").each((index, element) => {
+      const productName = $(element).find(".p-item-name a").text().trim();
+      const productDetails = $(element).find(".p-item-name a").attr("href");
+      const productPrice = $(element).find(".p-item-price").text().trim();
+      const productImage = $(element).find(".p-item-img img").attr("src");
 
       products.push({
         source: "StartTech",
-        name,
-        price,
-        link: `https://www.startech.com.bd${link}`,
+        productName,
+        productPrice,
+        productDetails,
+        productImage,
       });
+
+      // Returning `false` breaks out of `.each` loop after 3 products
+      if (products.length === 3) return false;
     });
 
     return products;
@@ -34,4 +36,4 @@ async function scrapeStartTech(query) {
   }
 }
 
-module.exports = { scrapeStartTech };
+export { scrapeStartTech };

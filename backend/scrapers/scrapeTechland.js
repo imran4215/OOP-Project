@@ -1,5 +1,5 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
 async function scrapeTechland(query) {
   const url = `https://www.techlandbd.com/index.php?route=product/search&search=${query}`;

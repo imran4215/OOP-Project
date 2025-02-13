@@ -19,4 +19,4 @@ async function scrapeAllSites(query) {
   return allProducts;
 }
 
-module.exports = { scrapeAllSites };
+export { scrapeAllSites };

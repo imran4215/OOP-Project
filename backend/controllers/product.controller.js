@@ -1,6 +1,7 @@
 import axios from "axios";
 import Product from "../models/product.model.js";
 import { scrapeAndSort } from "../scrapers/scrapeAndSort.js";
+import { demoScrape } from "../scrapers/demoScrape.js";
 
 export const saveAllProducts = async (req, res) => {
   try {
@@ -44,6 +45,24 @@ export const getProductsBySearch = async (req, res) => {
   try {
     const results = await scrapeAndSort(query);
     res.json(results);
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching products" });
+  }
+};
+
+export const demo = async (req, res) => {
+  const { query } = req.query;
+
+  if (!query) {
+    return res.status(400).json({ error: "Search query is required" });
+  }
+
+  try {
+    const htmlData = await demoScrape(query);
+    res.json({
+      message: "Query parameters received",
+      data: htmlData,
+    });
   } catch (error) {
     res.status(500).json({ error: "Error fetching products" });
   }
