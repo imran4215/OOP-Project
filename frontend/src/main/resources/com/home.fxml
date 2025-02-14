@@ -8,12 +8,11 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml">
     <!-- Include Header -->
     <top>
-        <!-- <fx:include source="../componenets/home/navbar.fxml"/> -->
-        <fx:include source="navbar.fxml"/>
+        <fx:include source="components/home/navbar.fxml"/>
     </top>
     
     <!-- Include Footer -->
     <bottom>
-        <fx:include source="footer.fxml"/>
+        <fx:include source="components/home/footer.fxml"/>
     </bottom>
 </BorderPane>

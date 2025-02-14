@@ -1,13 +1,15 @@
+import { scrapeAllSites } from "./scrapeAllSites.js";
+
 async function scrapeAndSort(query) {
-  const products = await scrapAllSites(query);
+  const products = await scrapeAllSites(query);
 
   // Group by product name
   const groupedProducts = {};
   products.forEach((product) => {
-    if (!groupedProducts[product.name]) {
-      groupedProducts[product.name] = [];
+    if (!groupedProducts[product.productName]) {
+      groupedProducts[product.productName] = [];
     }
-    groupedProducts[product.name].push(product);
+    groupedProducts[product.productName].push(product);
   });
 
   // Sort prices for each group

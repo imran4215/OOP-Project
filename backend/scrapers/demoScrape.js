@@ -3,35 +3,40 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 
 async function demoScrape(query) {
-  const url = `https://www.startech.com.bd/product/search?search=${query}`;
+  const url = `https://www.ryans.com/search?q=${query}`;
 
   try {
     const { data } = await axios.get(url);
-    const $ = cheerio.load(data); // Load the HTML data with Cheerio
-    console.log(url);
 
-    // Extract product names with the class 'p-item-name'
+    const $ = cheerio.load(data); // Load the HTML data with Cheerio
+
+    // Extract product details from the search results
     const products = [];
-    $(".p-item").each((index, element) => {
-      const productName = $(element).find(".p-item-name a").text().trim();
-      const productDetails = $(element).find(".p-item-name a").attr("href");
-      const productPrice = $(element).find(".p-item-price").text().trim();
-      const productImage = $(element).find(".p-item-img img").attr("src");
+    $(".category-single-product").each((index, element) => {
+      const productName = $(element).find(".card img").attr("alt");
+      const productDetails = $(element).find(".card a").attr("href");
+      const productPrice = $(element)
+        .find(".card .pr-text")
+        .text()
+        .replace(/[^\d,]/g, "")
+        .trim();
+      const productImage = $(element).find(".card img").attr("src");
 
       products.push({
-        source: "StartTech",
+        source: "Ryans",
         productName,
         productPrice,
         productDetails,
         productImage,
       });
 
-      if (products.length === 5) return false;
+      // Returning `false` breaks out of `.each` loop after 3 products
+      //if (products.length === 3) return false;
     });
 
     return products;
   } catch (error) {
-    console.error(`Error scraping StartTech: ${error.message}`);
+    console.error(`Error scraping Ryans: ${error.message}`);
     return [];
   }
 }

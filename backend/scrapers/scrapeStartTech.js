@@ -9,12 +9,16 @@ async function scrapeStartTech(query) {
     const { data } = await axios.get(url);
     const $ = cheerio.load(data); // Load the HTML data with Cheerio
 
-    // Extract product names with the class 'p-item-name'
+    // Extract product details from the search results
     const products = [];
     $(".p-item").each((index, element) => {
       const productName = $(element).find(".p-item-name a").text().trim();
       const productDetails = $(element).find(".p-item-name a").attr("href");
-      const productPrice = $(element).find(".p-item-price").text().trim();
+      const productPrice = $(element)
+        .find(".p-item-price")
+        .text()
+        .replace(/[^\d,]/g, "")
+        .trim();
       const productImage = $(element).find(".p-item-img img").attr("src");
 
       products.push({
@@ -26,7 +30,7 @@ async function scrapeStartTech(query) {
       });
 
       // Returning `false` breaks out of `.each` loop after 3 products
-      if (products.length === 3) return false;
+      if (products.length === 2) return false;
     });
 
     return products;

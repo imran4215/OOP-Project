@@ -44,7 +44,7 @@ export const getProductsBySearch = async (req, res) => {
 
   try {
     const results = await scrapeAndSort(query);
-    res.json(results);
+    res.send(results);
   } catch (error) {
     res.status(500).json({ error: "Error fetching products" });
   }

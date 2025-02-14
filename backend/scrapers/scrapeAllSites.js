@@ -1,18 +1,29 @@
-import { scrapeTechland } from "./techland";
-import { scrapeStartTech } from "./startTech";
-import { scrapeRyans } from "./ryans";
+import { scrapeRyans } from "./scrapeRyans.js";
+import { scrapeStartTech } from "./scrapeStartTech.js";
+import { scrapeTechland } from "./scrapeTechland.js";
 
 async function scrapeAllSites(query) {
-  const results = await Promise.allSettled([
-    scrapeTechland(query),
-    scrapeStartTech(query),
-    scrapeRyans(query),
-  ]);
+  // First, scrape StartTech to get the product names
+  const startTechResults = await scrapeStartTech(query);
 
-  const allProducts = [];
-  results.forEach((result) => {
+  // Extract product names from StartTech results
+  const productNames = startTechResults.map((product) => product.productName);
+
+  // Scrape other websites using the product names
+  const allResults = await Promise.allSettled(
+    productNames.map((productName) =>
+      Promise.all([scrapeTechland(productName), scrapeRyans(productName)])
+    )
+  );
+
+  // Combine all results into a single array
+  const allProducts = [...startTechResults];
+
+  allResults.forEach((result) => {
     if (result.status === "fulfilled") {
-      allProducts.push(...result.value.slice(0, 5));
+      result.value.forEach((products) => {
+        allProducts.push(...products);
+      });
     }
   });
 

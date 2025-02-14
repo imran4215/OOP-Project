@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="footer" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@styles/footerStyle.css">
+<VBox fx:id="footer" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../styles/footerStyle.css">
     <!-- Newsletter Signup -->
     <HBox styleClass="newsletter">
         <Label text="✉ Sign Up For Newsletter" styleClass="newsletter-text"/>

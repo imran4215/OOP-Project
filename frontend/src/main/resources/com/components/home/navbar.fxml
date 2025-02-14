@@ -7,7 +7,7 @@
 
 <BorderPane fx:id="navbar" xmlns:fx="http://javafx.com/fxml" 
             fx:controller="com.NavbarController" 
-            stylesheets="@styles/navbarStyle.css">
+            stylesheets="@../../styles/navbarStyle.css">
 
     <top>
         <VBox spacing="0">
