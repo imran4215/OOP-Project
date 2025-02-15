@@ -30,7 +30,7 @@ async function scrapeStartTech(query) {
       });
 
       // Returning `false` breaks out of `.each` loop after 3 products
-      if (products.length === 2) return false;
+      if (products.length === 5) return false;
     });
 
     return products;

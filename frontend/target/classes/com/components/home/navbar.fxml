@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="navbar" xmlns:fx="http://javafx.com/fxml" 
+            fx:controller="com.NavbarController" 
+            stylesheets="@../../styles/navbarStyle.css">
+
+    <top>
+        <VBox spacing="0">
+            <!-- Top Bar -->
+            <HBox id="top-bar" alignment="CENTER">
+                <Label text="Free Shipping Over ৳1000  |  Free Shipping" id="shipping-label"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label text="Hotline: (+888) 4344 6000 - (+880) 1750 249899" id="hotline-label"/>
+            </HBox>
+
+            <!-- Main Navbar -->
+            <HBox id="navbar-main" alignment="CENTER" spacing="20">
+                <Label text="MIST MART." id="brand-logo"  onMouseClicked="#switchToHome" />
+                
+                <HBox id="search-container" alignment="CENTER" spacing="5">
+                    <TextField promptText="Search Product Here..." id="search-field"/>
+                    <Button text="🔍 Search" id="search-button"/>
+                </HBox>
+
+                <Pane HBox.hgrow="ALWAYS"/>
+
+                <HBox id="action-buttons" alignment="CENTER" spacing="15">
+                    <Button text="❤ Favourite Wishlist" id="wishlist-btn"/>
+                    <Button text="👤 Log In" id="login-btn" onMouseClicked="#switchToLogin"/>
+                    <Button text="🛒 ৳0.00" id="cart-btn" styleClass="cart-button"/>
+                </HBox>
+            </HBox>
+
+            <!-- Bottom Navbar -->
+            <HBox id="bottom-navbar" alignment="CENTER" spacing="20">
+                <Button text="☰ SHOP CATEGORIES" id="categories-btn"/>
+                <Button text="HOME" styleClass="nav-btn" onMouseClicked="#switchToHome"/>
+                <Button text="OUR STORE" styleClass="nav-btn"/>
+                <Button text="BLOGS" styleClass="nav-btn"/>
+                <Button text="CONTACT US" styleClass="nav-btn" onMouseClicked="#switchToContactUs"/>
+            </HBox>
+        </VBox>
+    </top>
+</BorderPane>
