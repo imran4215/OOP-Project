@@ -3,7 +3,7 @@ import Product from "../models/product.model.js";
 import { scrapeAndSort } from "../scrapers/scrapeAndSort.js";
 import { demoScrape } from "../scrapers/demoScrape.js";
 
-export const saveAllProducts = async (req, res) => {
+export const saveProducts = async (req, res) => {
   try {
     const { data } = await axios.get(
       "https://fakestoreapi.com/products?limit=3"
@@ -11,10 +11,10 @@ export const saveAllProducts = async (req, res) => {
 
     data.map(async (product) => {
       const newProduct = new Product({
-        title: product.title,
-        description: product.description,
-        price: product.price,
-        imageUrl: product.image,
+        productName: product.title,
+        productDetails: product.description,
+        productPrice: product.price,
+        productImage: product.image,
         category: product.category,
       });
       await newProduct.save();
@@ -26,7 +26,7 @@ export const saveAllProducts = async (req, res) => {
   }
 };
 
-export const getAllProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.status(200).json(products);

@@ -1,15 +1,15 @@
 import express from "express";
 import {
   demo,
-  getAllProducts,
+  getProducts,
   getProductsBySearch,
-  saveAllProducts,
+  saveProducts,
 } from "../controllers/product.controller.js";
 
 const router = express.Router();
 
-router.get("/saveProducts", saveAllProducts);
-router.get("/getAllProducts", getAllProducts);
+router.get("/saveProducts", saveProducts);
+router.get("/getProducts", getProducts);
 router.get("/search", getProductsBySearch);
 router.get("/demo", demo);
 
