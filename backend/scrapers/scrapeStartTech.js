@@ -14,11 +14,18 @@ async function scrapeStartTech(query) {
     $(".p-item").each((index, element) => {
       const productName = $(element).find(".p-item-name a").text().trim();
       const productDetails = $(element).find(".p-item-name a").attr("href");
-      const productPrice = $(element)
-        .find(".p-item-price")
+      const newPrice = $(element)
+        .find(".price-new")
         .text()
         .replace(/[^\d,]/g, "")
         .trim();
+      const productPrice = newPrice
+        ? newPrice
+        : $(element)
+            .find(".p-item-price")
+            .text()
+            .replace(/[^\d,]/g, "")
+            .trim();
       const productImage = $(element).find(".p-item-img img").attr("src");
 
       products.push({

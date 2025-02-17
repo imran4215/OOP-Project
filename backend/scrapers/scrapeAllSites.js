@@ -1,6 +1,10 @@
+import { scrapeComputerVillage } from "./scrapeComputerVillage.js";
+import { scrapeComputerVision } from "./scrapeComputerVision.js";
 import { scrapeRyans } from "./scrapeRyans.js";
+import { scrapeSkyland } from "./scrapeSkyLand.js";
 import { scrapeStartTech } from "./scrapeStartTech.js";
 import { scrapeTechland } from "./scrapeTechland.js";
+import { scrapeUltraTech } from "./scrapeUltraTech.js";
 
 async function scrapeAllSites(query) {
   // First, scrape StartTech to get the product names
@@ -12,7 +16,14 @@ async function scrapeAllSites(query) {
   // Scrape other websites using the product names
   const allResults = await Promise.allSettled(
     productNames.map((productName) =>
-      Promise.all([scrapeTechland(productName), scrapeRyans(productName)])
+      Promise.all([
+        scrapeTechland(productName),
+        scrapeRyans(productName),
+        scrapeSkyland(productName),
+        scrapeUltraTech(productName),
+        scrapeComputerVillage(productName),
+        scrapeComputerVision(productName),
+      ])
     )
   );
 

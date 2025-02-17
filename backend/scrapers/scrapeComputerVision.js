@@ -2,7 +2,7 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 
-async function demoScrape(query) {
+async function scrapeComputerVision(query) {
   const url = `https://computervision.com.bd/index.php?route=product/search&search=${query}&description=true`;
 
   try {
@@ -44,4 +44,4 @@ async function demoScrape(query) {
   }
 }
 
-export { demoScrape };
+export { scrapeComputerVision };

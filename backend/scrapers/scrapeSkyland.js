@@ -2,34 +2,29 @@ import axios from "axios";
 // import cheerio from "cheerio";
 import * as cheerio from "cheerio";
 
-async function scrapeRyans(query) {
-  const url = `https://www.ryans.com/search?q=${query}`;
+async function scrapeSkyland(query) {
+  const url = `https://www.skyland.com.bd/index.php?route=product/search&search=${query}`;
 
   try {
     const { data } = await axios.get(url);
-
     const $ = cheerio.load(data); // Load the HTML data with Cheerio
 
     // Extract product details from the search results
     const products = [];
-    $(".category-single-product").each((index, element) => {
-      const productName = $(element)
-        .find(".card img")
-        .attr("alt")
-        .split("#")[0]
-        .trim();
-      const productDetails = $(element).find(".card a").attr("href");
+    $(".product-thumb").each((index, element) => {
+      const productName = $(element).find(".name a").text().trim();
+      const productDetails = $(element).find(".name a").attr("href");
       const productPrice = $(element)
-        .find(".card .pr-text")
+        .find(".price .price-new")
         .text()
         .replace(/[^\d,]/g, "")
         .trim();
-      if (productPrice === "0") return true;
-
-      const productImage = $(element).find(".card img").attr("src");
+      const productImage = $(element)
+        .find(".product-img .img-first")
+        .attr("src");
 
       products.push({
-        source: "Ryans",
+        source: "Skyland",
         productName,
         productPrice,
         productDetails,
@@ -42,9 +37,9 @@ async function scrapeRyans(query) {
 
     return products;
   } catch (error) {
-    console.error(`Error scraping Ryans: ${error.message}`);
+    console.error(`Error scraping Skylad: ${error.message}`);
     return [];
   }
 }
 
-export { scrapeRyans };
+export { scrapeSkyland };

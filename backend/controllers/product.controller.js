@@ -59,10 +59,11 @@ export const demo = async (req, res) => {
 
   try {
     const htmlData = await demoScrape(query);
-    res.json({
-      message: "Query parameters received",
-      data: htmlData,
-    });
+    // res.json({
+    //   message: "Query parameters received",
+    //   data: htmlData,
+    // });
+    res.send(htmlData);
   } catch (error) {
     res.status(500).json({ error: "Error fetching products" });
   }
