@@ -17,15 +17,14 @@ public class App extends Application {
 
     @Override
         public void start(Stage stage) throws IOException {
-            //scene = new Scene(loadFXML("products_"));
+            //scene = new Scene(loadFXML("signup"));
             //scene = new Scene(loadFXML("fardin"));
-            scene = new Scene(loadFXML("hridoy"));
+            scene = new Scene(loadFXML("products_"));
             // stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setMaximized(true); 
             stage.show();
         }
-
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));

@@ -11,15 +11,15 @@
 
             <VBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Email" styleClass="input-label" />
-                <TextField promptText="Enter your Email here" styleClass="input-field" />
+                <TextField fx:id="emailField" promptText="Enter your Email here" styleClass="input-field" />
             </VBox>
 
             <VBox spacing="10" alignment="CENTER_LEFT">
                 <Label text="Password" styleClass="input-label" />
-                <PasswordField promptText="Enter your Password" styleClass="input-field" />
+                <PasswordField fx:id="passwordField" promptText="Enter your Password" styleClass="input-field" />
             </VBox>
 
-            <Button text="Log In" styleClass="primary-button"/>
+            <Button fx:id="loginButton" text="Log In" styleClass="primary-button"/>
             <Label text="Don't have any account? Sign Up" styleClass="link-label" onMouseClicked="#switchToSignup" />
 
         </VBox>

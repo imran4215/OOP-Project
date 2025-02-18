@@ -11,6 +11,8 @@
         <fx:include source="components/home/navbar.fxml"/>
     </top>
     
+    <!-- Include Content -->
+
     <!-- Include Footer -->
     <bottom>
         <fx:include source="components/home/footer.fxml"/>

@@ -1,16 +1,7 @@
-import z from "zod";
 import bcrypt from "bcrypt";
 
 import User from "../models/user.model.js";
 import { generateToken } from "../lib/utils.js";
-
-//User schema to validate user input via zod
-const userSchema = z.object({
-  username: z.string().min(3, { message: "Username must be 3 character long" }),
-  email: z.string().email({ message: "Enter a valid email" }),
-  password: z.string().min(6, { message: "Password must be 6 character long" }),
-  confirmPassword: z.string().min(6),
-});
 
 export const signup = async (req, res) => {
   try {
@@ -24,15 +15,6 @@ export const signup = async (req, res) => {
     //Check if password and confirmPassword are same
     if (password !== confirmPassword) {
       return res.status(400).json({ error: "Passwords do not match" });
-    }
-
-    //Validate user input
-    const validation = userSchema.safeParse(req.body);
-    if (!validation.success) {
-      const errorMessgae = validation.error.errors.map(
-        (error) => error.message
-      );
-      return res.status(400).json({ error: errorMessgae });
     }
 
     //Check if user already exists or not
@@ -56,14 +38,7 @@ export const signup = async (req, res) => {
     await newUser.save();
 
     //Send success response
-    if (newUser) {
-      generateToken(newUser._id, res);
-      res
-        .status(201)
-        .json({ message: "User registered successfully", newUser });
-    } else {
-      res.status(500).json({ error: "Internal server error" });
-    }
+    res.status(201).json({ message: "User registered successfully", newUser });
   } catch (error) {
     console.error("Error occuring in signing up", error.message);
   }

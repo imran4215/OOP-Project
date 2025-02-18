@@ -36,11 +36,11 @@
                     <VBox spacing="5" styleClass="product-details">
                         <Label text="Product Name" styleClass="product-name"/>
                         <Label text="Product description goes here." styleClass="product-description"/>
-                        <!-- <HBox spacing="10">
-                            <Label text="$20.00" styleClass="product-price"/>
-                            <Label text="$25.00" styleClass="product-original-price"/>
+                        <HBox spacing="10">
+                            <Label text="20.00" styleClass="product-price"/>
+                            <Label text="25.00" styleClass="product-original-price"/>
                             <Label text="20% off" styleClass="product-discount"/>
-                        </HBox> -->
+                        </HBox>
                     </VBox>
                 </VBox>
             </GridPane>
