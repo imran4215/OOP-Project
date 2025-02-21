@@ -11,8 +11,8 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0" 
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.DemoController"
-            stylesheets="@styles/demoStyle.css">
+            fx:controller="com.HomeContentController"
+            stylesheets="@../../styles/homeContentStyle.css">
             
     <!-- Top: Breadcrumb Navigation -->
     <top>

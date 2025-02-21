@@ -23,8 +23,8 @@
                 <Label text="MIST MART." id="brand-logo"  onMouseClicked="#switchToHome" />
                 
                 <HBox id="search-container" alignment="CENTER" spacing="5">
-                    <TextField promptText="Search Product Here..." id="search-field"/>
-                    <Button text="🔍 Search" id="search-button"/>
+                    <TextField promptText="Search Product Here..." id="search-field" fx:id="searchField" onAction="#switchToSearchProducts"/>
+                    <Button text="🔍 Search" id="search-button" onMouseClicked="#switchToSearchProducts"/>
                 </HBox>
 
                 <Pane HBox.hgrow="ALWAYS"/>

@@ -2,8 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
 <ScrollPane fitToWidth="true" xmlns:fx="http://javafx.com/fxml">
     <VBox>
@@ -11,7 +10,7 @@
         <fx:include source="components/home/navbar.fxml"/>
 
         <!-- Main Content -->
-        <fx:include source="components/home/homeContent.fxml"/>
+        <fx:include source="components/searchProducts/searchProducts_.fxml"/>
 
         <!-- Include Footer -->
         <fx:include source="components/home/footer.fxml"/>

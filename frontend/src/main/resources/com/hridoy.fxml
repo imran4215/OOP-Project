@@ -87,7 +87,7 @@
             <Label alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" prefHeight="137.0" prefWidth="88.0" text="Hard Disk" textFill="#d12b2b" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BASELINE" />
             <ImageView fitHeight="46.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <image>
-                  <Image url="@../../../../../../../../Pictures/Project/Laptop/Hard%20Disk.jpg" />
+                  <Image url="@images/1.jpg" />
                </image>
             </ImageView>
             <ImageView fitHeight="90.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">

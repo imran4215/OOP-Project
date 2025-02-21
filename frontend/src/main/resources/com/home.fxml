@@ -5,16 +5,15 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml">
-    <!-- Include Header -->
-    <top>
+<ScrollPane fitToWidth="true" xmlns:fx="http://javafx.com/fxml">
+    <VBox>
+        <!-- Include Header -->
         <fx:include source="components/home/navbar.fxml"/>
-    </top>
-    
-    <!-- Include Content -->
 
-    <!-- Include Footer -->
-    <bottom>
+        <!-- Main Content -->
+        <fx:include source="components/home/homeContent.fxml"/>
+
+        <!-- Include Footer -->
         <fx:include source="components/home/footer.fxml"/>
-    </bottom>
-</BorderPane>
+    </VBox>
+</ScrollPane>
