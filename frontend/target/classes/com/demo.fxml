@@ -1,49 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<BorderPane xmlns="http://javafx.com/javafx/8.0" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.DemoController"
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.DemoController"
             stylesheets="@styles/demoStyle.css">
-            
-    <!-- Top: Breadcrumb Navigation -->
-    <top>
-        <HBox spacing="5" alignment="CENTER_LEFT" styleClass="breadcrumb-bar">
-            <Label text="Computer" styleClass="breadcrumb-text"/>
-            <Label text="PC Parts" styleClass="breadcrumb-highlight"/>
-        </HBox>
-    </top>
-    
-    <!-- Left: Side Menu -->
+    <!-- Left Section: Big Product Image -->
     <left>
-        <VBox spacing="10" styleClass="side-menu" prefWidth="200">
-            <Label text="PC Parts" styleClass="menu-title"/>
-            <Label text="Processor" styleClass="menu-item"/>
-            <Label text="Motherboard" styleClass="menu-item"/>
-            <Label text="RAM" styleClass="menu-item"/>
-            <Label text="Hard Disk" styleClass="menu-item"/>
-            <Label text="SSD" styleClass="menu-item"/>
-            <Label text="Graphics Card" styleClass="menu-item"/>
-            <Label text="Mouse" styleClass="menu-item"/>
-            <Label text="Keyboard" styleClass="menu-item"/>
-            <Label text="DVD Writer" styleClass="menu-item"/>
+        <VBox alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #ffffff;">
+            <ImageView fx:id="bigProductImage" fitHeight="500" fitWidth="500" preserveRatio="true" />
         </VBox>
     </left>
-    
-    <!-- Center: Scrollable Grid of Products -->
+    <!-- Right Section: Scrollable Product Details -->
     <center>
-        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
-            <GridPane fx:id="productGrid" alignment="CENTER" styleClass="product-grid" />
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-padding: 0;">
+            <VBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
+                <!-- Product Title -->
+                <VBox spacing="5" alignment="TOP_LEFT">
+                    <Text fx:id="bigProductSource" styleClass="company-name" />
+                    <Text fx:id="bigProductTitle" styleClass="product-title" />
+                </VBox>
+                <!-- Description -->
+                <Text text="Excellent working capacity and fast processor for multi-tasking." styleClass="description-text" />
+                <!-- Price and Discount Section -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="bigProductPrice" styleClass="discounted-price" />
+                </HBox>
+                <!-- Buy Now Button -->
+                <Button text="BUY NOW" styleClass="buy-now-button" maxWidth="Infinity" />
+                <!-- Additional Products Section -->
+                <VBox spacing="20" alignment="TOP_LEFT">
+                    <Text text="Additional Products" styleClass="section-title" />
+                    <VBox fx:id="productListContainer" spacing="15" alignment="TOP_LEFT" />
+                </VBox>
+            </VBox>
         </ScrollPane>
     </center>
-    
-    
 </BorderPane>

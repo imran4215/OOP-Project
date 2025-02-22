@@ -19,10 +19,10 @@ async function scrapeAllSites(query) {
       Promise.all([
         scrapeTechland(productName),
         scrapeRyans(productName),
-        scrapeSkyland(productName),
-        scrapeUltraTech(productName),
-        scrapeComputerVillage(productName),
-        scrapeComputerVision(productName),
+        //scrapeSkyland(productName),
+        //scrapeUltraTech(productName),
+        //scrapeComputerVillage(productName),
+        //scrapeComputerVision(productName),
       ])
     )
   );

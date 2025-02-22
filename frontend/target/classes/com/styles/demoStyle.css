@@ -1,96 +1,175 @@
 /* General Styles */
 .root {
-  -fx-background-color: #e8f5e9; /* Light green background */
-  -fx-font-family: "Arial", sans-serif;
+  -fx-font-family: "Arial";
+  -fx-background-color: #f5f5f5;
 }
 
-/* Breadcrumb Bar */
-.breadcrumb-bar {
-  -fx-background-color: #4caf50; /* Green background */
-  -fx-padding: 10px;
+/* Left and Right Sections */
+.left,
+.center {
+  -fx-pref-width: 50%; /* Equal width for both sections */
+  -fx-min-width: 50%;
+  -fx-max-width: 50%;
+  -fx-background-color: #ffffff;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+  -fx-padding: 20;
 }
 
-.breadcrumb-text {
-  -fx-text-fill: #ffffff; /* White text */
-  -fx-font-size: 14px;
+/* ScrollPane */
+ScrollPane {
+  -fx-background: transparent;
+  -fx-background-color: transparent;
+}
+ScrollPane .viewport {
+  -fx-background-color: transparent;
+}
+
+/* Company Name */
+.company-name {
+  -fx-font-size: 18px;
+  -fx-fill: #333333;
   -fx-font-weight: bold;
 }
 
-.breadcrumb-highlight {
-  -fx-text-fill: #ffeb3b; /* Yellow highlight for active item */
-  -fx-font-size: 14px;
-  -fx-font-weight: bold;
-}
-
-/* Side Menu */
-.side-menu {
-  -fx-background-color: #c8e6c9; /* Lighter green for side menu */
-  -fx-padding: 15px;
-  -fx-border-width: 0 1px 0 0;
-  -fx-border-color: #4caf50;
-}
-
-.menu-title {
-  -fx-text-fill: #2e7d32; /* Dark green for title */
+/* Product Title */
+.product-title {
   -fx-font-size: 16px;
+  -fx-fill: #666666;
   -fx-font-weight: bold;
 }
 
-.menu-item {
-  -fx-text-fill: #388e3c; /* Slightly darker green for items */
+/* Description Text */
+.description-text {
   -fx-font-size: 14px;
-  -fx-cursor: hand; /* Pointer cursor on hover */
+  -fx-fill: #444444;
+  -fx-font-style: italic;
 }
 
-.menu-item:hover {
-  -fx-text-fill: #ffffff; /* White text on hover */
-  -fx-background-color: #4caf50; /* Green background on hover */
-  -fx-padding: 5px;
+/* Price and Discount Styles */
+.discounted-price {
+  -fx-text-fill: #00ea0c;
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-font-size: 18px;
+  -fx-font-weight: bold;
+  -fx-cursor: hand;
+}
+
+/* Buy Now Button */
+.buy-now-button {
+  -fx-text-fill: #ffffff;
+  -fx-background-color: linear-gradient(to bottom, #0078d7, #005bb5);
   -fx-border-radius: 5px;
+  -fx-border-color: #005bb5;
+  -fx-border-width: 2px;
+  -fx-font-size: 16px;
+  -fx-padding: 15px 30px; /* Increased padding for taller button */
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 2);
+  -fx-transition: all 0.3s ease;
+}
+.buy-now-button:hover {
+  -fx-background-color: linear-gradient(to bottom, #005bb5, #003f7f);
+  -fx-scale-x: 1.02; /* Slight scale-up on hover */
+  -fx-scale-y: 1.02;
 }
 
-/* Scroll Pane */
-.scroll-pane {
-  -fx-background-color: transparent;
-  -fx-padding: 10px;
+/* Left and Right Sections */
+.left {
+  -fx-pref-width: 60%; /* Left section takes 60% of the width */
+  -fx-min-width: 60%;
+  -fx-max-width: 60%;
+  -fx-background-color: #ffffff;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+  -fx-padding: 20;
 }
 
-.scroll-pane .viewport {
-  -fx-background-color: transparent;
+.center {
+  -fx-pref-width: 40%; /* Right section takes 40% of the width */
+  -fx-min-width: 40%;
+  -fx-max-width: 40%;
+  -fx-background-color: #ffffff;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+  -fx-padding: 20;
 }
 
-/* Product Grid */
-.product-grid {
-  -fx-padding: 20px;
-  -fx-background-color: #e8f5e9; /* Light green background */
-}
-
-/* Product Card */
-.product-card {
-  -fx-background-color: #ffffff; /* White background */
-  -fx-border-color: #4caf50; /* Green border */
-  -fx-border-width: 1px;
-  -fx-border-radius: 10px;
-  -fx-padding: 15px; /* Increased padding for better spacing */
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
-  -fx-cursor: hand; /* Pointer cursor on hover */
-}
-
-.product-card:hover {
-  -fx-background-color: #f1f8e9; /* Light green on hover */
-}
-
-/* Product Image */
-.product-card .image-view {
-  -fx-alignment: center; /* Center-align the image */
-}
-
-/* Product Label */
-.product-label {
-  -fx-text-fill: #2e7d32; /* Dark green text */
-  -fx-font-size: 14px;
+/* Additional Products Section */
+.section-title {
+  -fx-font-size: 18px;
+  -fx-fill: #333333;
   -fx-font-weight: bold;
-  -fx-alignment: center; /* Center-align the text */
-  -fx-text-alignment: center; /* Ensure text is centered horizontally */
-  -fx-padding: 5px 0; /* Add padding for spacing */
+}
+
+/* Product Row */
+.product-row {
+  -fx-border-color: #e0e0e0;
+  -fx-border-radius: 10px;
+  -fx-border-width: 1px;
+  -fx-padding: 15px;
+  -fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9);
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
+  -fx-spacing: 20;
+  -fx-alignment: CENTER_LEFT;
+}
+.product-row:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+/* Price Button */
+.price-button {
+  -fx-text-fill: #00ea0c;
+  -fx-background-color: transparent;
+  -fx-border-color: #00ea0c;
+  -fx-border-radius: 5px;
+  -fx-font-size: 12px;
+  -fx-padding: 5px 10px;
+  -fx-cursor: hand;
+  -fx-transition: all 0.3s ease;
+}
+.price-button:hover {
+  -fx-background-color: #00c20a;
+  -fx-text-fill: #ffffff;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+/* View More Button */
+.view-more-button {
+  -fx-text-fill: #1186b4;
+  -fx-background-color: transparent;
+  -fx-border-color: #1186b4;
+  -fx-border-radius: 5px;
+  -fx-font-size: 12px;
+  -fx-padding: 5px 10px;
+  -fx-cursor: hand;
+  -fx-transition: all 0.3s ease;
+}
+.view-more-button:hover {
+  -fx-background-color: #1186b4;
+  -fx-text-fill: #ffffff;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+/* Image Hover Effect */
+.image-view {
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+  -fx-border-radius: 5px;
+  -fx-border-color: #e0e0e0;
+  -fx-border-width: 1px;
+  -fx-transition: all 0.3s ease;
+}
+.image-view:hover {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+/* Main Product Image */
+#bigProductImage {
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+  -fx-border-radius: 10px;
+  -fx-border-color: #e0e0e0;
+  -fx-border-width: 1px;
 }

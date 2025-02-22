@@ -15,7 +15,7 @@ export const saveProducts = async (req, res) => {
         productDetails: product.description,
         productPrice: product.price,
         productImage: product.image,
-        category: product.category,
+        productCategory: product.category,
       });
       await newProduct.save();
     });

@@ -1,8 +1,10 @@
 package com;
 
 public class SharedData {
-    // The data to be shared
+    // The data to be shared in SearchProductsController
     private String searchQuery;
+    // The data to be shared in ProductDetailsController
+    private String selectedProduct;
 
     // Singleton instance
     private static final SharedData instance = new SharedData();
@@ -15,13 +17,22 @@ public class SharedData {
         return instance;
     }
 
-    // Getter for searchQuery
+    // Setter for searchQuery in SearchProductsController
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery = searchQuery;
+    }
+
+    // Getter for searchQuery in SearchProductsController
     public String getSearchQuery() {
         return searchQuery;
     }
 
-    // Setter for searchQuery
-    public void setSearchQuery(String searchQuery) {
-        this.searchQuery = searchQuery;
+    // Setter for selectedProduct in ProductDetailsController
+    public void setSelectedProductData(String productDetails) {
+        this.selectedProduct = productDetails;
+    }
+    // Getter for selectedProduct in ProductDetailsController
+    public String getSelectedProductData() {
+        return selectedProduct;
     }
 }
