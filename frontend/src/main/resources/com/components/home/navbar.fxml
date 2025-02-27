@@ -30,8 +30,12 @@
                 <Pane HBox.hgrow="ALWAYS"/>
 
                 <HBox id="action-buttons" alignment="CENTER" spacing="15">
-                    <Button text="❤ Favourite Wishlist" id="wishlist-btn"/>
-                    <Button text="👤 Log In" id="login-btn" onMouseClicked="#switchToLogin"/>
+                    <Button text="👤 Log In" id="login-btn" fx:id="loginBtn" onMouseClicked="#switchToLogin"/>
+                    <Button text="👤 Sign Up" id="signup-btn" fx:id="signupBtn" onMouseClicked="#switchToSignUp"/>
+                    <HBox alignment="CENTER" spacing="12" visible="${usernameLabel.visible}">
+                        <Label fx:id="usernameLabel" textFill="white" styleClass="username-label"/>
+                        <Button text="🚪 Log Out" id="logout-btn" onMouseClicked="#logout" styleClass="logout-btn"/>
+                    </HBox>
                     <Button text="🛒 ৳0.00" id="cart-btn" styleClass="cart-button"/>
                 </HBox>
             </HBox>

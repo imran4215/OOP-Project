@@ -79,13 +79,19 @@ public class LoginController {
 
                 // Get the response from backend as a string
                 String responseBody = response.body().string();
-                //System.out.println(responseBody);
-
+                
                 if (response.isSuccessful()) {
                     Platform.runLater(() -> {
+                        // Extract the username from the response
+                        String username = new JSONObject(responseBody).getJSONObject("user").getString("username");
+                        //System.out.println("Logged in as: " + username);
+
+                        // Set the username in the Auth class to indicate that the user is logged in
+                        Auth.login(username);
+                        
                         showInfoDialog("Success", "Logged In successfully!");
                         try {
-                            App.setRoot("products_");
+                            App.setRoot("home");
                         } catch (IOException ex) {
                             showErrorDialog("Error", "Failed to redirect to Home page.");
                             ex.printStackTrace();

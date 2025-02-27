@@ -19,7 +19,7 @@ public class App extends Application {
         public void start(Stage stage) throws IOException {
             scene = new Scene(loadFXML("home"));
             //scene = new Scene(loadFXML("searchProducts"));
-            // stage.setFullScreen(true);
+            //stage.setFullScreen(true);
             stage.setScene(scene);
             stage.setMaximized(true); 
             stage.show();

@@ -67,6 +67,44 @@
   -fx-text-fill: #ff9900;
 }
 
+/* Username Label */
+.username-label {
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-padding: 5px 10px;
+  -fx-border-color: #ff9900;
+  -fx-border-radius: 5px;
+  -fx-border-width: 2px;
+  -fx-cursor: hand;
+}
+
+.username-label:hover {
+  -fx-text-fill: #ff9900;
+  -fx-underline: true;
+  -fx-background-color: #333;
+  -fx-border-color: #ff9900;
+}
+
+/* Logout Button  */
+#logout-btn {
+  -fx-text-fill: white;
+  -fx-background-color: transparent;
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-cursor: hand;
+  -fx-border-color: #ff9900;
+  -fx-border-radius: 5px;
+  -fx-border-width: 2px;
+  -fx-padding: 8px 12px;
+}
+
+#logout-btn:hover {
+  -fx-text-fill: #ff9900;
+  -fx-background-color: #333;
+  -fx-border-color: #ff9900;
+}
+
 /* Bottom Navbar */
 #bottom-navbar {
   -fx-background-color: #0a0a0a;

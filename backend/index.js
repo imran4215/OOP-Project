@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import { connectDB } from "./lib/db.js";
 import userRoute from "./routes/user.route.js";
 import productRoute from "./routes/product.route.js";
+import order from "./routes/order.route.js";
 
 //Configurations
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(cors());
 //Routes
 app.use("/api/user", userRoute);
 app.use("/api/product", productRoute);
+app.use("/api/order", order);
 
 //Server
 app.listen(PORT, () => {

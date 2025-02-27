@@ -6,7 +6,7 @@
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/contactUsStyle.css">
     <!-- Include Header -->
     <top>
-        <fx:include source="navbar.fxml" />
+        <fx:include source="components/home/navbar.fxml" />
     </top>
 
     <!-- Contact Us Page Content and Footer -->
@@ -42,7 +42,7 @@
 
                 <!-- Include Footer Inside the Scrollable Area -->
                 <Region prefHeight="100" style="-fx-background-color: transparent;" />
-                <fx:include source="footer.fxml" />
+                <fx:include source="components/home/footer.fxml" />
             </VBox>
         </ScrollPane>
     </center>

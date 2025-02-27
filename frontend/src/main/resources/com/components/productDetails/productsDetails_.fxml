@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.ProductDetailsController"
+            stylesheets="@../../styles/productDetailsStyle.css">
+    <!-- Left Section: Big Product Image -->
+    <left>
+        <VBox alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #ffffff;">
+            <ImageView fx:id="bigProductImage" fitHeight="500" fitWidth="500" preserveRatio="true" />
+        </VBox>
+    </left>
+    <!-- Right Section: Scrollable Product Details -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-padding: 0;">
+            <VBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
+                <!-- Product Title -->
+                <VBox spacing="5" alignment="TOP_LEFT">
+                    <Text fx:id="bigProductSource" styleClass="company-name" />
+                    <Text fx:id="bigProductTitle" styleClass="product-title" />
+                </VBox>
+                <!-- Description -->
+                <Text text="Excellent working capacity and fast processor for multi-tasking." styleClass="description-text" />
+                <!-- Price and Discount Section -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="bigProductPrice" styleClass="discounted-price" />
+                </HBox>
+                <!-- Buy Now Button -->
+                <Button text="BUY NOW" styleClass="buy-now-button" maxWidth="Infinity" />
+                <!-- Additional Products Section -->
+                <VBox spacing="20" alignment="TOP_LEFT">
+                    <Text text="Additional Products" styleClass="section-title" />
+                    <VBox fx:id="productListContainer" spacing="15" alignment="TOP_LEFT" />
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
