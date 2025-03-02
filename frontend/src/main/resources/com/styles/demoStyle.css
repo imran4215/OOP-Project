@@ -1,175 +1,136 @@
-/* General Styles */
+/* Global Styles */
 .root {
-  -fx-font-family: "Arial";
-  -fx-background-color: #f5f5f5;
+  -fx-font-family: "Arial", sans-serif;
+  -fx-background-color: linear-gradient(to bottom right, #f1f3f5, #e9ecef);
 }
 
-/* Left and Right Sections */
-.left,
-.center {
-  -fx-pref-width: 50%; /* Equal width for both sections */
-  -fx-min-width: 50%;
-  -fx-max-width: 50%;
+.header {
+  -fx-background-color: linear-gradient(to right, #2d3436, #353b48);
+  -fx-padding: 25;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 15, 0, 0, 3);
+}
+
+.header-label {
+  -fx-font-size: 30px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #ffffff;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+}
+
+/* Table Styles */
+.user-table {
   -fx-background-color: #ffffff;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
-  -fx-padding: 20;
+  -fx-border-color: #ced4da;
+  -fx-border-radius: 10;
+  -fx-background-radius: 10;
+  -fx-padding: 15;
+  -fx-margin: 30;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0, 0, 5);
 }
 
-/* ScrollPane */
-ScrollPane {
-  -fx-background: transparent;
-  -fx-background-color: transparent;
-}
-ScrollPane .viewport {
-  -fx-background-color: transparent;
+/* Remove the blue background in the column header */
+.user-table .column-header-background {
+  -fx-background-color: #2d3436; /* Dark background */
+  -fx-background-radius: 10 10 0 0;
+  -fx-padding: 5;
 }
 
-/* Company Name */
-.company-name {
-  -fx-font-size: 18px;
-  -fx-fill: #333333;
+/* Column Header Styles */
+.user-table .column-header .label {
+  -fx-text-fill: #000000;
+  -fx-font-size: 15px;
   -fx-font-weight: bold;
+  -fx-padding: 12 0;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0, 0, 1);
 }
 
-/* Product Title */
-.product-title {
-  -fx-font-size: 16px;
-  -fx-fill: #666666;
-  -fx-font-weight: bold;
-}
-
-/* Description Text */
-.description-text {
+/* Row Styles */
+.user-table .table-row-cell {
+  -fx-min-height: 50px;
   -fx-font-size: 14px;
-  -fx-fill: #444444;
+  -fx-alignment: CENTER;
+  -fx-border-color: #e9ecef;
+  -fx-border-width: 0 0 1 0;
+  -fx-text-fill: #2d3436;
+  -fx-transition: all 0.2s ease;
+}
+
+/* Odd Row Background Color */
+.user-table .table-row-cell:odd {
+  -fx-background-color: #f8f9fa;
+}
+
+/* Hover Effect for Rows */
+.user-table .table-row-cell:hover {
+  -fx-background-color: #dfe6e9;
+  -fx-text-fill: #2d3436;
+  -fx-cursor: hand;
+}
+
+/* Selected Row Styling */
+.user-table .table-row-cell:selected {
+  -fx-background-color: #74b9ff; /* Light blue */
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+}
+
+/* Button Styling - Prevent Button Color Change */
+.button-delete {
+  -fx-background-color: #b80000;
+}
+
+.button-details {
+  -fx-background-color: #00b800;
+}
+
+.button-details,
+.button-delete {
+  -fx-text-fill: #ffffff;
+  -fx-font-weight: bold;
+  -fx-font-size: 13px;
+  -fx-padding: 8 18;
+  -fx-background-radius: 6;
+  -fx-cursor: hand;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 8, 0, 0, 2);
+  -fx-transition: all 0.2s ease;
+}
+
+/* Button Hover Effects */
+.button-details:hover {
+  -fx-background-color: #55efc4;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+.button-delete:hover {
+  -fx-background-color: #ff7675;
+  -fx-scale-x: 1.05;
+  -fx-scale-y: 1.05;
+}
+
+/* Scrollbar Styling */
+.user-table .scroll-bar:vertical {
+  -fx-pref-width: 14;
+}
+
+.user-table .scroll-bar:vertical .track {
+  -fx-background-color: #f1f3f5;
+  -fx-background-radius: 7;
+}
+
+.user-table .scroll-bar:vertical .thumb {
+  -fx-background-color: #b0b8c0;
+  -fx-background-radius: 7;
+}
+
+.user-table .scroll-bar:vertical .thumb:hover {
+  -fx-background-color: #848c94;
+}
+
+/* Empty Label Style */
+.empty-label {
+  -fx-font-size: 18px;
+  -fx-text-fill: #636e72;
   -fx-font-style: italic;
-}
-
-/* Price and Discount Styles */
-.discounted-price {
-  -fx-text-fill: #00ea0c;
-  -fx-background-color: transparent;
-  -fx-border-color: transparent;
-  -fx-font-size: 18px;
-  -fx-font-weight: bold;
-  -fx-cursor: hand;
-}
-
-/* Buy Now Button */
-.buy-now-button {
-  -fx-text-fill: #ffffff;
-  -fx-background-color: linear-gradient(to bottom, #0078d7, #005bb5);
-  -fx-border-radius: 5px;
-  -fx-border-color: #005bb5;
-  -fx-border-width: 2px;
-  -fx-font-size: 16px;
-  -fx-padding: 15px 30px; /* Increased padding for taller button */
-  -fx-cursor: hand;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 2);
-  -fx-transition: all 0.3s ease;
-}
-.buy-now-button:hover {
-  -fx-background-color: linear-gradient(to bottom, #005bb5, #003f7f);
-  -fx-scale-x: 1.02; /* Slight scale-up on hover */
-  -fx-scale-y: 1.02;
-}
-
-/* Left and Right Sections */
-.left {
-  -fx-pref-width: 60%; /* Left section takes 60% of the width */
-  -fx-min-width: 60%;
-  -fx-max-width: 60%;
-  -fx-background-color: #ffffff;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
   -fx-padding: 20;
-}
-
-.center {
-  -fx-pref-width: 40%; /* Right section takes 40% of the width */
-  -fx-min-width: 40%;
-  -fx-max-width: 40%;
-  -fx-background-color: #ffffff;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
-  -fx-padding: 20;
-}
-
-/* Additional Products Section */
-.section-title {
-  -fx-font-size: 18px;
-  -fx-fill: #333333;
-  -fx-font-weight: bold;
-}
-
-/* Product Row */
-.product-row {
-  -fx-border-color: #e0e0e0;
-  -fx-border-radius: 10px;
-  -fx-border-width: 1px;
-  -fx-padding: 15px;
-  -fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9);
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 3);
-  -fx-spacing: 20;
-  -fx-alignment: CENTER_LEFT;
-}
-.product-row:hover {
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
-}
-
-/* Price Button */
-.price-button {
-  -fx-text-fill: #00ea0c;
-  -fx-background-color: transparent;
-  -fx-border-color: #00ea0c;
-  -fx-border-radius: 5px;
-  -fx-font-size: 12px;
-  -fx-padding: 5px 10px;
-  -fx-cursor: hand;
-  -fx-transition: all 0.3s ease;
-}
-.price-button:hover {
-  -fx-background-color: #00c20a;
-  -fx-text-fill: #ffffff;
-  -fx-scale-x: 1.05;
-  -fx-scale-y: 1.05;
-}
-
-/* View More Button */
-.view-more-button {
-  -fx-text-fill: #1186b4;
-  -fx-background-color: transparent;
-  -fx-border-color: #1186b4;
-  -fx-border-radius: 5px;
-  -fx-font-size: 12px;
-  -fx-padding: 5px 10px;
-  -fx-cursor: hand;
-  -fx-transition: all 0.3s ease;
-}
-.view-more-button:hover {
-  -fx-background-color: #1186b4;
-  -fx-text-fill: #ffffff;
-  -fx-scale-x: 1.05;
-  -fx-scale-y: 1.05;
-}
-
-/* Image Hover Effect */
-.image-view {
-  -fx-cursor: hand;
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
-  -fx-border-radius: 5px;
-  -fx-border-color: #e0e0e0;
-  -fx-border-width: 1px;
-  -fx-transition: all 0.3s ease;
-}
-.image-view:hover {
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
-  -fx-scale-x: 1.05;
-  -fx-scale-y: 1.05;
-}
-
-/* Main Product Image */
-#bigProductImage {
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
-  -fx-border-radius: 10px;
-  -fx-border-color: #e0e0e0;
-  -fx-border-width: 1px;
 }

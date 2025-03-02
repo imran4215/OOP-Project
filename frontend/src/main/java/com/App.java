@@ -16,18 +16,19 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-        public void start(Stage stage) throws IOException {
-            scene = new Scene(loadFXML("home"));
-            //scene = new Scene(loadFXML("searchProducts"));
-            //stage.setFullScreen(true);
-            stage.setScene(scene);
-            stage.setMaximized(true); 
-            stage.show();
-        }
+    public void start(Stage stage) throws IOException {
+        // scene = new Scene(loadFXML("home"));
+        // scene = new Scene(loadFXML("demo"));
+        scene = new Scene(loadFXML("adminDashboard"));
+        // stage.setFullScreen(true);
+        stage.setScene(scene);
+        stage.setMaximized(true);
+        stage.show();
+    }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
-        
+
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

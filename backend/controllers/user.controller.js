@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-
 import User from "../models/user.model.js";
 import { generateToken } from "../lib/utils.js";
+import Order from "../models/order.model.js";
 
 export const signup = async (req, res) => {
   try {
@@ -76,11 +76,124 @@ export const login = async (req, res) => {
   }
 };
 
-export const logout = async (req, res) => {
+export const deleteUser = async (req, res) => {
   try {
-    res.clearCookie("jwt");
-    res.status(200).json({ message: "User logged out successfully" });
+    const { username } = req.params;
+
+    //Check if username is provided
+    if (!username) {
+      return res.status(400).json({ error: "Username is required" });
+    }
+
+    //Find user in database
+    const user = await User.findOne({ username });
+
+    //Check if user exists or not
+    if (!user) {
+      return res.status(400).json({ error: "User does not exist" });
+    }
+
+    //Delete user from database
+    await User.deleteOne({ username });
+
+    //Send success response
+    res.status(200).json({ message: "User deleted successfully", user });
   } catch (error) {
-    console.error("Error occuring in logout", error.message);
+    console.error("Error occuring in deleting user", error.message);
+  }
+};
+
+export const getAllUsers = async (req, res) => {
+  try {
+    // Fetch all users
+    const users = await User.find();
+
+    // For each user, calculate their total, pending, delivered, and canceled orders
+    const usersWithOrderStats = [];
+
+    for (let user of users) {
+      // Get order counts based on statuses for each user
+      const totalOrders = await Order.countDocuments({ userId: user._id });
+      const pendingOrders = await Order.countDocuments({
+        userId: user._id,
+        orderStatus: "pending",
+      });
+      const deliveredOrders = await Order.countDocuments({
+        userId: user._id,
+        orderStatus: "delivered",
+      });
+      const canceledOrders = await Order.countDocuments({
+        userId: user._id,
+        orderStatus: "cancelled",
+      });
+
+      // Push user with their order stats to the result array
+      usersWithOrderStats.push({
+        ...user._doc, // Spread the user's data
+        totalOrders,
+        pendingOrders,
+        deliveredOrders,
+        canceledOrders,
+      });
+    }
+
+    // Send success response
+    res.status(200).json({
+      message: "All users with order stats fetched successfully",
+      users: usersWithOrderStats,
+    });
+  } catch (error) {
+    console.error(
+      "Error occurred in fetching all users with order stats",
+      error.message
+    );
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const userDetails = async (req, res) => {
+  try {
+    const { username } = req.body;
+
+    //Check if username is provided
+    if (!username) {
+      return res.status(400).json({ error: "Username is required" });
+    }
+
+    //Find user in database
+    const user = await User.findOne({ username });
+
+    //Check if user exists or not
+    if (!user) {
+      return res.status(400).json({ error: "User does not exist" });
+    }
+
+    const totalOrders = await Order.countDocuments({ userId: user._id });
+    const pendingOrders = await Order.countDocuments({
+      userId: user._id,
+      orderStatus: "pending",
+    });
+    const deliveredOrders = await Order.countDocuments({
+      userId: user._id,
+      orderStatus: "delivered",
+    });
+    const canceledOrders = await Order.countDocuments({
+      userId: user._id,
+      orderStatus: "cancelled",
+    });
+
+    const orders = await Order.find({ userId: user._id });
+    //Send success response
+    res.status(200).json({
+      message: "User details fetched successfully",
+      user,
+      totalOrders,
+      pendingOrders,
+      deliveredOrders,
+      canceledOrders,
+      orders,
+    });
+  } catch (error) {
+    console.error("Error occuring in fetching user details", error.message);
   }
 };

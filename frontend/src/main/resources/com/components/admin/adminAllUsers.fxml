@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx/17"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DemoController" stylesheets="@styles/demoStyle.css">
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AdminAllUsersController" stylesheets="@../../styles/adminAllUsersStyle.css">
 
     <top>
         <VBox styleClass="header">

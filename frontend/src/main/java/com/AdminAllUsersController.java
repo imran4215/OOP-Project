@@ -16,7 +16,7 @@ import java.io.IOException;
  * Controller class for managing user data display and interactions in the
  * JavaFX application.
  */
-public class DemoController {
+public class AdminAllUsersController {
 
     @FXML
     private TableView<JSONObject> userTable;

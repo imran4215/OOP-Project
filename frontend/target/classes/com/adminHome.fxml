@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" prefWidth="1280" prefHeight="720" stylesheets="@styles/adminHomeStyle.css">
+
+    <!-- Top Panel (Navigation) -->
+    <HBox styleClass="top-panel" prefHeight="80" alignment="CENTER_LEFT" spacing="20">
+        <Label text="Admin Panel" styleClass="panel-title" />
+        <!-- Spacer to push buttons to the center -->
+        <Region HBox.hgrow="ALWAYS" />
+        <HBox styleClass="button-container" spacing="10" alignment="CENTER">
+            <Button text="User" styleClass="option-button" />
+            <Button text="Dashboard" styleClass="option-button" />
+            <Button text="Orders" styleClass="option-button" />
+        </HBox>
+
+        <!-- Spacer to balance the layout -->
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+
+    <!-- Bottom Panel (Content) -->
+    <StackPane styleClass="bottom-panel" VBox.vgrow="ALWAYS">
+        <VBox alignment="CENTER" spacing="20">
+            <Label text="Welcome to the Admin Panel!" styleClass="welcome-message" />
+            <Label text="Manage your system with ease." styleClass="subtitle" />
+        </VBox>
+    </StackPane>
+</VBox>

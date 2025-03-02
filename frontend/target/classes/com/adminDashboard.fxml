@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" prefWidth="1280.0" prefHeight="720.0" stylesheets="@styles/adminDashboardStyle.css" fx:controller="com.AdminDashboardController">
+
+    <!-- Top Navigation Bar -->
+    <HBox fx:id="topNav" prefHeight="60.0" alignment="CENTER_LEFT" styleClass="top-nav">
+        <padding>
+            <Insets left="20.0" right="20.0"/>
+        </padding>
+        <Label fx:id="navTitle" text="Admin Dashboard" styleClass="nav-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button fx:id="logoutBtn" text="Logout" styleClass="logout-button" onAction="#handleLogout"/>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox VBox.vgrow="ALWAYS" styleClass="main-content">
+        <!-- Sidebar -->
+        <VBox fx:id="sidebar" prefWidth="200.0" styleClass="sidebar">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <children>
+                <Button text="Dashboard" styleClass="sidebar-button" onAction="#showDashboard"/>
+                <Button fx:id="usersBtn" text="Users" styleClass="sidebar-button" onAction="#showUsers"/>
+                <Button fx:id="ordersBtn" text="Orders" styleClass="sidebar-button" onAction="#showOrders"/>
+                <Button text="Settings" styleClass="sidebar-button" onAction="#showSettings"/>
+            </children>
+        </VBox>
+
+        <!-- Dynamic Content Panel -->
+        <StackPane fx:id="contentPane" HBox.hgrow="ALWAYS" styleClass="content-panel">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <!-- Default Dashboard Content -->
+            <VBox fx:id="dashboardContent" spacing="20.0">
+                <!-- Stats Cards -->
+                <HBox fx:id="statsCards" spacing="20.0" styleClass="cards-row">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Total Users" styleClass="card-title"/>
+                        <Label fx:id="usersCount" text="1,234" styleClass="card-value"/>
+                        <Label text="+5% this month" styleClass="card-subtext"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Total Orders" styleClass="card-title"/>
+                        <Label fx:id="ordersCount" text="567" styleClass="card-value"/>
+                        <Label text="+12% this month" styleClass="card-subtext"/>
+                    </VBox>
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <Label text="Revenue" styleClass="card-title"/>
+                        <Label fx:id="revenueCount" text="12,345" styleClass="card-value"/>
+                        <Label text="+8% this month" styleClass="card-subtext"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Charts and Tables -->
+                <HBox fx:id="chartsTables" spacing="20.0" styleClass="charts-tables-row" VBox.vgrow="ALWAYS">
+                    <VBox styleClass="chart-container" HBox.hgrow="ALWAYS">
+                        <Label text="Sales Overview" styleClass="section-title"/>
+                        <LineChart fx:id="salesChart" legendSide="BOTTOM" animated="false">
+                            <xAxis>
+                                <CategoryAxis fx:id="xAxis" label="Month"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxis" label="Sales ($)" autoRanging="true"/>
+                            </yAxis>
+                        </LineChart>
+                    </VBox>
+                    <VBox styleClass="table-container" HBox.hgrow="ALWAYS">
+                        <Label text="Recent Orders" styleClass="section-title"/>
+                        <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="orderIdCol" text="Order ID" prefWidth="100.0"/>
+                                <TableColumn fx:id="customerCol" text="Customer" prefWidth="200.0"/>
+                                <TableColumn fx:id="amountCol" text="Amount" prefWidth="100.0"/>
+                                <TableColumn fx:id="statusCol" text="Status" prefWidth="100.0"/>
+                            </columns>
+                            <placeholder>
+                                <Label text="No orders available"/>
+                            </placeholder>
+                        </TableView>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </StackPane>
+    </HBox>
+</VBox>
