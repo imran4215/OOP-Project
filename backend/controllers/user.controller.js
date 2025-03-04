@@ -153,7 +153,7 @@ export const getAllUsers = async (req, res) => {
 
 export const userDetails = async (req, res) => {
   try {
-    const { username } = req.body;
+    const { username } = req.params;
 
     //Check if username is provided
     if (!username) {

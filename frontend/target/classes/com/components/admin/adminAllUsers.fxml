@@ -7,12 +7,12 @@
 
     <top>
         <VBox styleClass="header">
-            <Label text="User Management Dashboard" styleClass="header-label"/>
+            <Label text="All Users" styleClass="header-label"/>
         </VBox>
     </top>
 
     <center>
-        <TableView fx:id="userTable" styleClass="user-table">
+        <TableView fx:id="userTable" styleClass="user-table" VBox.vgrow="ALWAYS">
             <placeholder>
                 <Label text="No users found" styleClass="empty-label"/>
             </placeholder>

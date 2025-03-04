@@ -116,15 +116,15 @@ public class AdminDashboardController {
     @FXML
     private void showUsers() {
         try {
-            if (usersView == null) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/components/admin/adminAllUsers.fxml"));
-                usersView = loader.load();
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/components/admin/adminAllUsers.fxml"));
+            usersView = loader.load();
+            AdminAllUsersController controller = loader.getController();
+            controller.setContentPane(contentPane); // Pass contentPane reference
             contentPane.getChildren().clear();
             contentPane.getChildren().add(usersView);
             LOGGER.info("Switched to Users view");
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to load users.fxml: " + e.getMessage(), e);
+            LOGGER.log(Level.SEVERE, "Failed to load adminAllUsers.fxml: " + e.getMessage(), e);
             showAlert("Error", "Could not load Users view");
         }
     }
@@ -132,16 +132,16 @@ public class AdminDashboardController {
     @FXML
     private void showOrders() {
         try {
-            if (usersView == null) { // Reusing users.fxml for demonstration
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/users.fxml"));
-                usersView = loader.load();
-            }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/components/admin/adminAllOrders.fxml"));
+            usersView = loader.load();
+            AdminAllOrdersController controller = loader.getController();
+            controller.setContentPane(contentPane);
             contentPane.getChildren().clear();
             contentPane.getChildren().add(usersView);
-            LOGGER.info("Switched to Orders view");
+            LOGGER.info("Switched to Users view");
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Failed to load users.fxml for Orders: " + e.getMessage(), e);
-            showAlert("Error", "Could not load Orders view");
+            LOGGER.log(Level.SEVERE, "Failed to load adminAllOrders.fxml: " + e.getMessage(), e);
+            showAlert("Error", "Could not load Users view");
         }
     }
 

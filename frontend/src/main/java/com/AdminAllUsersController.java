@@ -4,13 +4,19 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Controller class for managing user data display and interactions in the
@@ -21,23 +27,29 @@ public class AdminAllUsersController {
     @FXML
     private TableView<JSONObject> userTable;
 
+    private Pane contentPane; // Reference to the dashboard's content pane
     private static final OkHttpClient CLIENT = new OkHttpClient();
     private static final String BASE_URL = "http://localhost:5000/api/user";
+    private static final Logger LOGGER = Logger.getLogger(AdminAllUsersController.class.getName());
 
-    /**
-     * Initializes the controller automatically when the FXML is loaded.
-     */
     @FXML
     public void initialize() {
         setupTableColumns();
         fetchUserData();
     }
 
-    /**
-     * Configures table columns including data columns and action column.
-     */
+    public void setContentPane(Pane contentPane) {
+        this.contentPane = contentPane;
+        if (contentPane == null) {
+            LOGGER.severe("Received null contentPane in setContentPane.");
+        } else {
+            LOGGER.info("contentPane set successfully in AdminAllUsersController.");
+        }
+    }
+
     private void setupTableColumns() {
         addTableColumn("User Name", "username", 200);
+        addTableColumn("Email", "email", 200);
         addTableColumn("Total Orders", "totalOrders", 150);
         addTableColumn("Pending Orders", "pendingOrders", 150);
         addTableColumn("Cancelled Orders", "canceledOrders", 150);
@@ -45,13 +57,6 @@ public class AdminAllUsersController {
         addActionColumn();
     }
 
-    /**
-     * Adds a data column to the table view.
-     *
-     * @param title   Column header text
-     * @param jsonKey JSON key to extract data from
-     * @param width   Preferred column width in pixels
-     */
     private void addTableColumn(String title, String jsonKey, int width) {
         TableColumn<JSONObject, String> column = new TableColumn<>(title);
         column.setCellValueFactory(cellData -> {
@@ -64,9 +69,6 @@ public class AdminAllUsersController {
         userTable.getColumns().add(column);
     }
 
-    /**
-     * Adds an action column with Details and Delete buttons for each row.
-     */
     private void addActionColumn() {
         TableColumn<JSONObject, Void> actionColumn = new TableColumn<>("Actions");
         actionColumn.setCellFactory(column -> new TableCell<>() {
@@ -102,9 +104,6 @@ public class AdminAllUsersController {
         userTable.getColumns().add(actionColumn);
     }
 
-    /**
-     * Creates a styled button with the specified properties.
-     */
     private Button createButton(String text, String styleClass, Runnable onAction) {
         Button button = new Button(text);
         button.getStyleClass().add(styleClass);
@@ -112,9 +111,6 @@ public class AdminAllUsersController {
         return button;
     }
 
-    /**
-     * Fetches user data from the backend API asynchronously.
-     */
     private void fetchUserData() {
         Request request = new Request.Builder()
                 .url(BASE_URL + "/allUsers")
@@ -124,9 +120,6 @@ public class AdminAllUsersController {
         executeAsyncRequest(request, this::handleFetchResponse);
     }
 
-    /**
-     * Handles the response from the user data fetch request.
-     */
     private void handleFetchResponse(Response response) throws IOException {
         if (response.isSuccessful() && response.body() != null) {
             String responseBody = response.body().string();
@@ -143,27 +136,40 @@ public class AdminAllUsersController {
         }
     }
 
-    /**
-     * Displays user details in an information alert.
-     *
-     * @param user JSONObject containing user data
-     */
     private void showUserDetails(JSONObject user) {
-        String message = String.format(
-                "Username: %s\nTotal Orders: %d\nPending Orders: %d\nCancelled Orders: %d\nDelivered Orders: %d",
-                user.optString("username", "N/A"),
-                user.optInt("totalOrders", 0),
-                user.optInt("pendingOrders", 0),
-                user.optInt("canceledOrders", 0),
-                user.optInt("deliveredOrders", 0));
-        showAlert(Alert.AlertType.INFORMATION, "User Details", message);
+        String username = user.optString("username", "N/A");
+        SharedData.getInstance().setSelectedUsername(username);
+        LOGGER.info("Selected user: " + username);
+
+        try {
+            String fxmlPath = "/com/components/admin/adminUserDetails.fxml";
+            LOGGER.info("Attempting to load FXML from: " + fxmlPath);
+
+            if (getClass().getResource(fxmlPath) == null) {
+                throw new IOException("FXML file not found at: " + fxmlPath);
+            }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent userDetailsRoot = loader.load();
+
+            if (contentPane == null) {
+                LOGGER.severe("contentPane is null. Cannot load user details.");
+                showAlert(Alert.AlertType.ERROR, "Error", "Content pane is not initialized.");
+                return;
+            }
+
+            contentPane.getChildren().clear();
+            contentPane.getChildren().add(userDetailsRoot);
+            LOGGER.info("Successfully loaded adminUserDetails.fxml into contentPane for user: " + username);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Failed to load adminUserDetails.fxml: " + e.getMessage(), e);
+            showAlert(Alert.AlertType.ERROR, "Error", "Could not load user details view: " + e.getMessage());
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Unexpected error: " + e.getMessage(), e);
+            showAlert(Alert.AlertType.ERROR, "Error", "An unexpected error occurred: " + e.getMessage());
+        }
     }
 
-    /**
-     * Deletes a user after confirmation.
-     *
-     * @param user JSONObject containing user data to delete
-     */
     private void deleteUser(JSONObject user) {
         String username = user.optString("username", "N/A");
         if (confirmDelete(username)) {
@@ -176,9 +182,6 @@ public class AdminAllUsersController {
         }
     }
 
-    /**
-     * Confirms user deletion with a dialog.
-     */
     private boolean confirmDelete(String username) {
         Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
         confirmation.setTitle("Delete User");
@@ -187,9 +190,6 @@ public class AdminAllUsersController {
                 .orElse(ButtonType.CANCEL) == ButtonType.OK;
     }
 
-    /**
-     * Handles the response from the delete request.
-     */
     private void handleDeleteResponse(Response response, JSONObject user) throws IOException {
         if (response.isSuccessful()) {
             Platform.runLater(() -> {
@@ -201,9 +201,6 @@ public class AdminAllUsersController {
         }
     }
 
-    /**
-     * Executes an HTTP request asynchronously.
-     */
     private void executeAsyncRequest(Request request, ResponseHandler handler) {
         new Thread(() -> {
             try (Response response = CLIENT.newCall(request).execute()) {
@@ -215,29 +212,20 @@ public class AdminAllUsersController {
         }).start();
     }
 
-    /**
-     * Displays an alert dialog.
-     */
     private void showAlert(Alert.AlertType type, String title, String message) {
-        Platform.runLater(() -> {
-            Alert alert = new Alert(type);
-            alert.setTitle(title);
-            alert.setHeaderText(null);
-            alert.setContentText(message);
-            alert.showAndWait();
-        });
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
-    /**
-     * Logs error messages to the console.
-     */
     private void logError(String message) {
-        System.err.println(message);
+        LOGGER.severe(message);
     }
 
     private void logError(String message, Exception e) {
-        System.err.println(message);
-        e.printStackTrace();
+        LOGGER.log(Level.SEVERE, message, e);
     }
 
     @FunctionalInterface

@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DemoController" stylesheets="@styles/demoStyle.css">
-
-    <top>
-        <VBox styleClass="header">
-            <Label text="User Management Dashboard" styleClass="header-label"/>
-        </VBox>
-    </top>
-
-    <center>
-        <TableView fx:id="userTable" styleClass="user-table">
-            <placeholder>
-                <Label text="No users found" styleClass="empty-label"/>
-            </placeholder>
-        </TableView>
-    </center>
-</BorderPane>
+<VBox fx:id="container"
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DemoController" spacing="20" styleClass="container" stylesheets="@styles/demoStyle.css">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox>

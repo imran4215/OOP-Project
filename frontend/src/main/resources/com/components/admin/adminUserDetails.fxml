@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" spacing="10.0" styleClass="content-panel" stylesheets="@../../styles/adminUserDetailsStyle.css" fx:controller="com.AdminUserDetailsController" prefWidth="1000.0" prefHeight="700.0">
+
+    <padding>
+        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+    </padding>
+
+    <!-- User Info Section (Reduced Height) -->
+    <VBox spacing="5.0" styleClass="user-info-container" prefHeight="150.0">
+        <padding>
+            <Insets top="5.0" right="10.0" bottom="5.0" left="10.0"/>
+        </padding>
+        <Label text="User Profile" styleClass="section-title"/>
+
+        <GridPane hgap="20.0" vgap="5.0" styleClass="user-details">
+            <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="detail-box" HBox.hgrow="ALWAYS" minWidth="200.0">
+                <Label text="Username" styleClass="detail-label"/>
+                <Label fx:id="usernameLabel" styleClass="detail-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="1" GridPane.rowIndex="0" styleClass="detail-box" HBox.hgrow="ALWAYS" minWidth="200.0">
+                <Label text="Email" styleClass="detail-label"/>
+                <Label fx:id="emailLabel" styleClass="detail-value"/>
+            </VBox>
+            <VBox GridPane.columnIndex="2" GridPane.rowIndex="0" styleClass="detail-box" HBox.hgrow="ALWAYS" minWidth="200.0">
+                <Label text="User ID" styleClass="detail-label"/>
+                <Label fx:id="userIdLabel" styleClass="detail-value"/>
+            </VBox>
+        </GridPane>
+
+        <!-- Combined Stats Row -->
+        <HBox spacing="10.0" styleClass="stats-row" alignment="CENTER_LEFT">
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Total Orders" styleClass="stat-label"/>
+                <Label fx:id="totalOrdersLabel" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Pending" styleClass="stat-label"/>
+                <Label fx:id="pendingOrdersLabel" styleClass="stat-value" style="-fx-text-fill: #d97706;"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Delivered" styleClass="stat-label"/>
+                <Label fx:id="deliveredOrdersLabel" styleClass="stat-value" style="-fx-text-fill: #059669;"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Total Spent" styleClass="stat-label"/>
+                <Label fx:id="totalSpentLabel" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Pending Amount" styleClass="stat-label"/>
+                <Label fx:id="pendingSpentLabel" styleClass="stat-value" style="-fx-text-fill: #d97706;"/>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Orders Section -->
+    <VBox spacing="10.0" VBox.vgrow="ALWAYS" styleClass="table-container">
+        <Label text="Order History" styleClass="section-title"/>
+        <ScrollPane fitToWidth="true" pannable="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+            <TableView fx:id="ordersTable" styleClass="orders-table">
+                <columns>
+                    <TableColumn fx:id="orderIdCol" text="Order ID" prefWidth="200.0"/>
+                    <TableColumn fx:id="productsCol" text="Products" prefWidth="500.0"/>
+                    <TableColumn fx:id="totalPriceCol" text="Total" prefWidth="100.0"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="100.0"/>
+                    <TableColumn fx:id="createdAtCol" text="Date" prefWidth="160.0"/>
+                </columns>
+                <placeholder>
+                    <Label text="No orders found" styleClass="empty-label"/>
+                </placeholder>
+            </TableView>
+        </ScrollPane>
+    </VBox>
+</VBox>

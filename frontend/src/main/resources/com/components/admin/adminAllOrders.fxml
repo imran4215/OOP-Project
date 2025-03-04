@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" spacing="10.0" styleClass="content-panel" stylesheets="@../../styles/adminAllOrdersStyle.css" fx:controller="com.AdminAllOrdersController" prefWidth="1000.0" prefHeight="700.0">
+
+    <padding>
+        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+    </padding>
+
+    <!-- Header Section -->
+    <VBox spacing="5.0" styleClass="header-container">
+        <padding>
+            <Insets top="5.0" right="10.0" bottom="5.0" left="10.0"/>
+        </padding>
+        <Label text="All Orders" styleClass="section-title"/>
+    </VBox>
+
+    <!-- Orders Table Section -->
+    <VBox spacing="10.0" VBox.vgrow="ALWAYS" styleClass="table-container">
+        <ScrollPane fitToWidth="true" pannable="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+            <TableView fx:id="allOrdersTable" styleClass="orders-table">
+                <columns>
+                    <TableColumn fx:id="orderIdCol" text="Order ID" prefWidth="180.0"/>
+                    <TableColumn fx:id="orderDateCol" text="Order Date" prefWidth="200.0"/>
+                    <TableColumn fx:id="orderStatusCol" text="Order Status" prefWidth="150.0"/>
+                    <TableColumn fx:id="orderPriceCol" text="Order Price" prefWidth="150.0"/>
+                    <TableColumn fx:id="viewDetailsCol" text="Actions" prefWidth="150.0"/>
+                </columns>
+                <placeholder>
+                    <Label text="No orders found" styleClass="empty-label"/>
+                </placeholder>
+            </TableView>
+        </ScrollPane>
+    </VBox>
+</VBox>

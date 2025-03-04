@@ -1,0 +1,71 @@
+.content-panel {
+  -fx-background-color: #f3f4f6;
+}
+
+.user-info-container {
+  -fx-background-color: #ffffff;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.section-title {
+  -fx-font-size: 22px; /* Larger "User Profile" and "Order History" */
+  -fx-font-weight: bold;
+  -fx-text-fill: #1f2937;
+}
+
+.detail-box {
+  -fx-padding: 5px;
+}
+
+.detail-label {
+  -fx-font-size: 12px;
+  -fx-text-fill: #6b7280;
+}
+
+.detail-value {
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1f2937;
+}
+
+.stats-row {
+  -fx-padding: 5px 0;
+}
+
+.stat-card {
+  -fx-padding: 5px;
+  -fx-alignment: center;
+}
+
+.stat-label {
+  -fx-font-size: 13px; /* Larger "Total Orders", "Pending", etc. */
+  -fx-text-fill: #6b7280;
+}
+
+.stat-value {
+  -fx-font-size: 14px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1f2937;
+}
+
+.table-container {
+  -fx-background-color: #ffffff;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.orders-table {
+  -fx-background-color: transparent;
+  -fx-table-cell-border-color: transparent;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.product-item {
+  -fx-padding: 4px;
+}

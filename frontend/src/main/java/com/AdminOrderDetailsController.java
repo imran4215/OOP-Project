@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
@@ -18,7 +17,7 @@ import java.text.DecimalFormat;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class DemoController {
+public class AdminOrderDetailsController {
     private static final OkHttpClient CLIENT = new OkHttpClient();
     private static final String FETCH_URL = "http://localhost:5000/api/order/getOrderDetails/";
     private static final String UPDATE_URL = "http://localhost:5000/api/order/updateOrderStatus/"; // Adjust as needed
@@ -33,9 +32,12 @@ public class DemoController {
     private TableView<Product> productsTable;
     private ComboBox<String> statusComboBox;
     private Button updateButton;
-    private String orderId = "67c595cae539291a0e585f1f";
+    private String orderId;
 
     public void initialize() {
+
+        // Get the selected order ID from the SharedData singleton
+        orderId = SharedData.getInstance().getSelectedOrderId();
         createUI();
         loadOrderDetails(orderId);
     }

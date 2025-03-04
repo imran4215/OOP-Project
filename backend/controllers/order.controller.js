@@ -3,7 +3,7 @@ import Order from "../models/order.model.js";
 // Place a New Order
 export const takeOrder = async (req, res) => {
   try {
-    const { userId, products, totalPrice } = req.body;
+    const { userId, products, totalPrice, address } = req.body;
 
     if (!userId || !products || !totalPrice) {
       return res.status(400).json({ message: "Missing required fields" });
@@ -13,6 +13,7 @@ export const takeOrder = async (req, res) => {
       userId,
       products,
       totalPrice,
+      address,
     });
 
     await newOrder.save();
@@ -38,32 +39,17 @@ export const getAllOrders = async (req, res) => {
 export const getOrderDetails = async (req, res) => {
   try {
     const { orderId } = req.params;
-    const order = await Order.findById(orderId);
+    const order = await Order.findById(orderId).populate(
+      "userId",
+      "username email"
+    );
 
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
 
-    const totalOrders = await Order.countDocuments({ userId: order.userId });
-    const confirmedOrders = await Order.countDocuments({
-      userId: order.userId,
-      orderStatus: "delivered",
-    });
-    const cancelledOrders = await Order.countDocuments({
-      userId: order.userId,
-      orderStatus: "cancelled",
-    });
-    const pendingOrders = await Order.countDocuments({
-      userId: order.userId,
-      orderStatus: "pending",
-    });
-
     res.json({
       order,
-      totalOrders,
-      confirmedOrders,
-      cancelledOrders,
-      pendingOrders,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -76,25 +62,31 @@ export const updateOrderStatus = async (req, res) => {
     const { orderId } = req.params;
     const { orderStatus } = req.body;
 
+    // Validate the order status
     if (!["pending", "delivered", "cancelled"].includes(orderStatus)) {
       return res.status(400).json({ message: "Invalid status" });
     }
 
+    // Update the order status
     const updatedOrder = await Order.findByIdAndUpdate(
       orderId,
       { orderStatus },
       { new: true }
     );
 
+    // Check if the order was found and updated
     if (!updatedOrder) {
       return res.status(404).json({ message: "Order not found" });
     }
 
+    // Return success response
     res.json({
       message: "Order status updated successfully",
       order: updatedOrder,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    // Handle unexpected errors
+    console.error("Error updating order status:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };

@@ -10,7 +10,7 @@ const router = expressc.Router();
 
 router.post("/takeOrder", takeOrder);
 router.get("/getAllOrders", getAllOrders);
-router.post("/getOrderDetails/:orderId", getOrderDetails);
-router.post("/updateOrderStatus/:orderId", updateOrderStatus);
+router.get("/getOrderDetails/:orderId", getOrderDetails);
+router.put("/updateOrderStatus/:orderId", updateOrderStatus);
 
 export default router;

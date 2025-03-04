@@ -1,0 +1,103 @@
+.content-panel {
+  -fx-background-color: #f3f4f6;
+}
+
+.header-container {
+  -fx-background-color: #ffffff;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.section-title {
+  -fx-font-size: 22px; /* Consistent with previous "User Profile" size */
+  -fx-font-weight: bold;
+  -fx-text-fill: #1f2937;
+}
+
+.table-container {
+  -fx-background-color: #ffffff;
+  -fx-border-radius: 8px;
+  -fx-background-radius: 8px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+}
+
+.orders-table {
+  -fx-background-color: transparent;
+  -fx-table-cell-border-color: transparent;
+}
+
+.orders-table .column-header {
+  -fx-background-color: #f9fafb;
+  -fx-border-color: #e5e7eb;
+  -fx-border-width: 0 0 1 0;
+  -fx-font-size: 13px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #1f2937;
+  -fx-padding: 8px;
+}
+
+.orders-table .table-row-cell {
+  -fx-background-color: #ffffff;
+  -fx-border-color: #e5e7eb;
+  -fx-border-width: 0 0 1 0;
+  -fx-pref-height: 50px; /* Fixed height for consistency */
+}
+
+.orders-table .table-row-cell:hover {
+  -fx-background-color: #f9fafb;
+}
+
+.orders-table .table-cell {
+  -fx-alignment: CENTER-LEFT;
+  -fx-text-fill: #1f2937;
+  -fx-font-size: 13px;
+  -fx-padding: 8px;
+}
+
+.orders-table .table-cell.status-delivered {
+  -fx-background-color: #d1fae5;
+  -fx-text-fill: #059669;
+  -fx-font-weight: bold;
+}
+
+.orders-table .table-cell.status-pending {
+  -fx-background-color: #fef3c7;
+  -fx-text-fill: #d97706;
+  -fx-font-weight: bold;
+}
+
+.orders-table .table-cell.status-canceled {
+  -fx-background-color: #fee2e2;
+  -fx-text-fill: #dc2626;
+  -fx-font-weight: bold;
+}
+
+.orders-table .table-cell.price {
+  -fx-text-fill: #059669;
+  -fx-font-weight: bold;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.button-view-details {
+  -fx-background-color: #3b82f6;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-padding: 6px 12px;
+  -fx-border-radius: 4px;
+  -fx-background-radius: 4px;
+  -fx-cursor: hand;
+}
+
+.button-view-details:hover {
+  -fx-background-color: #2563eb;
+}
+
+.empty-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #6b7280;
+}

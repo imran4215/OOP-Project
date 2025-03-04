@@ -4,7 +4,7 @@
 
 <VBox fx:id="container"
     xmlns="http://javafx.com/javafx/17"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.DemoController" spacing="20" styleClass="container" stylesheets="@styles/demoStyle.css">
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AdminOrderDetailsController" spacing="20" styleClass="container" stylesheets="@../../styles/adminOrderDetailsStyle.css" prefWidth="1000.0" prefHeight="700.0">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
