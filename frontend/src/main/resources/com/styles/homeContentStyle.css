@@ -1,58 +1,67 @@
 /* General Styles */
 .root {
-  -fx-background-color: #e8f5e9; /* Light green background */
-  -fx-font-family: "Arial", sans-serif;
+  -fx-background-color: #f9f9f9; /* Light gray background for a modern look */
+  -fx-font-family: "Segoe UI", sans-serif; /* Modern font */
+}
+
+/* Header */
+.header {
+  -fx-background-color: #2c3e50; /* Dark blue-gray for a professional look */
+  -fx-border-width: 0 0 1px 0;
+  -fx-border-color: #34495e; /* Slightly darker border for depth */
 }
 
 /* Breadcrumb Bar */
 .breadcrumb-bar {
-  -fx-background-color: #4caf50; /* Green background */
-  -fx-padding: 10px;
+  -fx-background-color: transparent;
 }
 
+/* Breadcrumb Text */
 .breadcrumb-text {
-  -fx-text-fill: #ffffff; /* White text */
+  -fx-text-fill: #bdc3c7; /* Light gray for readability */
   -fx-font-size: 14px;
-  -fx-font-weight: bold;
 }
 
+/* Breadcrumb Highlight */
 .breadcrumb-highlight {
-  -fx-text-fill: #ffeb3b; /* Yellow highlight for active item */
+  -fx-text-fill: #ecf0f1; /* Bright white for active item */
   -fx-font-size: 14px;
   -fx-font-weight: bold;
 }
 
 /* Side Menu */
 .side-menu {
-  -fx-background-color: #c8e6c9; /* Lighter green for side menu */
-  -fx-padding: 15px;
+  -fx-background-color: #34495e; /* Dark blue-gray to match header */
   -fx-border-width: 0 1px 0 0;
-  -fx-border-color: #4caf50;
+  -fx-border-color: #2c3e50; /* Slightly darker border */
 }
 
+/* Menu Title */
 .menu-title {
-  -fx-text-fill: #2e7d32; /* Dark green for title */
+  -fx-text-fill: #ecf0f1; /* Bright white for contrast */
   -fx-font-size: 16px;
   -fx-font-weight: bold;
+  -fx-padding: 0 0 15px 0;
 }
 
+/* Menu Items */
 .menu-item {
-  -fx-text-fill: #388e3c; /* Slightly darker green for items */
+  -fx-text-fill: #bdc3c7; /* Light gray for readability */
   -fx-font-size: 14px;
-  -fx-cursor: hand; /* Pointer cursor on hover */
+  -fx-cursor: hand;
+  -fx-padding: 8px 10px;
 }
 
 .menu-item:hover {
-  -fx-text-fill: #ffffff; /* White text on hover */
-  -fx-background-color: #4caf50; /* Green background on hover */
-  -fx-padding: 5px;
-  -fx-border-radius: 5px;
+  -fx-text-fill: #ecf0f1; /* Bright white on hover */
+  -fx-background-color: #2c3e50; /* Darker background on hover */
+  -fx-background-radius: 5px;
 }
 
 /* Scroll Pane */
 .scroll-pane {
   -fx-background-color: transparent;
-  -fx-padding: 10px;
+  -fx-padding: 20px;
 }
 
 .scroll-pane .viewport {
@@ -62,35 +71,58 @@
 /* Product Grid */
 .product-grid {
   -fx-padding: 20px;
-  -fx-background-color: #e8f5e9; /* Light green background */
+  -fx-background-color: transparent;
+  -fx-hgap: 20px;
+  -fx-vgap: 20px;
 }
 
 /* Product Card */
 .product-card {
-  -fx-background-color: #ffffff; /* White background */
-  -fx-border-color: #4caf50; /* Green border */
+  -fx-background-color: #ffffff; /* White card background */
+  -fx-background-radius: 10px;
+  -fx-border-color: #e0e0e0; /* Light gray border */
   -fx-border-width: 1px;
   -fx-border-radius: 10px;
-  -fx-padding: 15px; /* Increased padding for better spacing */
-  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 0, 0);
-  -fx-cursor: hand; /* Pointer cursor on hover */
+  -fx-padding: 20px;
+  -fx-effect: dropshadow(
+    gaussian,
+    rgba(0, 0, 0, 0.1),
+    10,
+    0,
+    0,
+    2
+  ); /* Subtle shadow */
+  -fx-cursor: hand;
 }
 
 .product-card:hover {
-  -fx-background-color: #f1f8e9; /* Light green on hover */
+  -fx-background-color: #f5f5f5; /* Light gray on hover */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 3);
 }
 
 /* Product Image */
 .product-card .image-view {
-  -fx-alignment: center; /* Center-align the image */
+  -fx-alignment: center;
 }
 
 /* Product Label */
 .product-label {
-  -fx-text-fill: #2e7d32; /* Dark green text */
+  -fx-text-fill: #333333; /* Dark gray for readability */
   -fx-font-size: 14px;
   -fx-font-weight: bold;
-  -fx-alignment: center; /* Center-align the text */
-  -fx-text-alignment: center; /* Ensure text is centered horizontally */
-  -fx-padding: 5px 0; /* Add padding for spacing */
+  -fx-alignment: center;
+  -fx-text-alignment: center;
+  -fx-padding: 10px 0;
+}
+
+/* Footer */
+.footer {
+  -fx-background-color: #2c3e50; /* Dark blue-gray to match header */
+  -fx-border-width: 1px 0 0 0;
+  -fx-border-color: #34495e; /* Slightly darker border */
+}
+
+.footer-text {
+  -fx-text-fill: #bdc3c7; /* Light gray for readability */
+  -fx-font-size: 13px;
 }

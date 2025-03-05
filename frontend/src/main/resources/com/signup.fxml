@@ -3,40 +3,61 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.ImageView?>
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/signupStyle.css" fx:controller="com.SignupController">
+<?import javafx.scene.effect.*?>
+<BorderPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/signupStyle.css" fx:controller="com.SignupController">
     <center>
-        <VBox spacing="30" alignment="CENTER" style="-fx-padding: 50;">
-            <Label text="Create Your Account" styleClass="title" />
-            
-            <!-- Username Field -->
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Username" styleClass="input-label" />
-                <TextField fx:id="usernameField" promptText="Enter your Full Name" styleClass="input-field" />
+        <StackPane>
+            <!-- Background card effect -->
+            <Pane styleClass="card-background" prefWidth="400" prefHeight="600">
+                <effect>
+                    <DropShadow color="#00000033" radius="20" spread="0.2"/>
+                </effect>
+            </Pane>
+
+            <!-- Form content -->
+            <VBox spacing="25" alignment="CENTER" style="-fx-padding: 40;">
+                <!-- Logo or Icon (Optional) -->
+                <ImageView fx:id="logo" fitWidth="80" fitHeight="80" preserveRatio="true"/>
+
+                <!-- Title -->
+                <Label text="Create Your Account" styleClass="title" />
+
+                <!-- Username Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Username" styleClass="input-label" />
+                    <TextField fx:id="usernameField" promptText="Enter your username" styleClass="input-field" />
+                </VBox>
+
+                <!-- Email Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Email" styleClass="input-label" />
+                    <TextField fx:id="emailField" promptText="Enter your email" styleClass="input-field" />
+                </VBox>
+
+                <!-- Password Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Password" styleClass="input-label" />
+                    <PasswordField fx:id="passwordField" promptText="Create a password" styleClass="input-field" />
+                </VBox>
+
+                <!-- Confirm Password Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Confirm Password" styleClass="input-label" />
+                    <PasswordField fx:id="confirmPasswordField" promptText="Confirm your password" styleClass="input-field" />
+                </VBox>
+
+                <!-- Sign Up Button -->
+                <Button fx:id="signUpButton" text="Sign Up" styleClass="primary-button"/>
+
+                <!-- Divider -->
+                <HBox alignment="CENTER">
+                    <Label text=" or " style="-fx-font-size: 17px; -fx-text-fill: #888;" />
+                </HBox>
+
+                <!-- Login Link -->
+                <Label text="Already have an account? Log in" styleClass="link-label" onMouseClicked="#switchToLogin" />
             </VBox>
-            
-            <!-- Email Field -->
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Email" styleClass="input-label" />
-                <TextField fx:id="emailField" promptText="Enter your Email" styleClass="input-field" />
-            </VBox>
-            
-            <!-- Password Field -->
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Password" styleClass="input-label" />
-                <PasswordField fx:id="passwordField" promptText="Enter your Password" styleClass="input-field" />
-            </VBox>
-            
-            <!-- Confirm Password Field -->
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Confirm Password" styleClass="input-label" />
-                <PasswordField fx:id="confirmPasswordField" promptText="Confirm your Password" styleClass="input-field" />
-            </VBox>
-            
-            <!-- Sign Up Button -->
-            <Button fx:id="signUpButton" text="Sign Up" styleClass="primary-button"/>
-            
-            <!-- Login Link -->
-            <Label text="Already have an account? Log in" styleClass="link-label" onMouseClicked="#switchToLogin" />
-        </VBox>
+        </StackPane>
     </center>
 </BorderPane>

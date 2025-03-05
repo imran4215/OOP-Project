@@ -1,64 +1,96 @@
 /* General Styles */
 .root {
-  -fx-font-family: "Arial";
-  -fx-background-color: #fafafa;
+  -fx-font-family: "Roboto", "Arial", sans-serif;
+}
+
+/* Card Background for Form */
+.card-background {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 15;
+  -fx-border-radius: 15;
 }
 
 /* Title Style */
 .title {
   -fx-font-size: 28px;
-  -fx-font-weight: bold;
-  -fx-text-fill: #2c3e50;
+  -fx-font-weight: 700;
+  -fx-text-fill: #1a237e;
   -fx-padding: 0 0 20 0;
+  -fx-alignment: center;
 }
 
 /* Input Label Style */
 .input-label {
   -fx-font-size: 14px;
-  -fx-text-fill: #546e7a;
-  -fx-font-weight: bold;
+  -fx-text-fill: #455a64;
+  -fx-font-weight: 500;
 }
 
 /* Input Field Style */
 .input-field {
   -fx-font-size: 14px;
-  -fx-padding: 10;
-  -fx-border-color: #bdbdbd;
-  -fx-border-radius: 5;
-  -fx-background-radius: 5;
-  -fx-pref-width: 300px;
-  -fx-background-color: #ffffff;
+  -fx-padding: 12;
+  -fx-border-color: #b0bec5;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-pref-width: 320px;
+  -fx-background-color: #fafafa;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 2);
 }
 
 .input-field:focused {
-  -fx-border-color: #00695c;
-  -fx-border-width: 2px;
+  -fx-border-color: #3f51b5;
+  -fx-border-width: 2;
+  -fx-background-color: #ffffff;
 }
 
 /* Primary Button Style */
 .primary-button {
-  -fx-background-color: #00695c;
-  -fx-text-fill: white;
+  -fx-background-color: #3f51b5;
+  -fx-text-fill: #ffffff;
   -fx-font-size: 16px;
-  -fx-font-weight: bold;
-  -fx-padding: 12 30;
-  -fx-background-radius: 5;
+  -fx-font-weight: 600;
+  -fx-padding: 12 40;
+  -fx-background-radius: 8;
   -fx-cursor: hand;
-  -fx-transition: background-color 0.3s ease;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
 }
 
 .primary-button:hover {
-  -fx-background-color: #004d40;
+  -fx-background-color: #303f9f;
+}
+
+.primary-button:pressed {
+  -fx-background-color: #283593;
+}
+
+/* Social Button Style */
+.social-button {
+  -fx-background-color: #ffffff;
+  -fx-text-fill: #37474f;
+  -fx-font-size: 14px;
+  -fx-font-weight: 500;
+  -fx-padding: 8 20;
+  -fx-border-color: #b0bec5;
+  -fx-border-width: 1;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+}
+
+.social-button:hover {
+  -fx-background-color: #f5f5f5;
 }
 
 /* Link Label Style */
 .link-label {
   -fx-font-size: 14px;
-  -fx-text-fill: #00695c;
+  -fx-text-fill: #3f51b5;
   -fx-cursor: hand;
   -fx-underline: true;
 }
 
 .link-label:hover {
-  -fx-text-fill: #004d40;
+  -fx-text-fill: #303f9f;
 }

@@ -1,0 +1,50 @@
+/* Smooth ScrollPane */
+.smooth-scroll-pane {
+  -fx-background-color: #ffffff; /* White background to match your design */
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+/* Main VBox inside ScrollPane */
+.main-vbox {
+  -fx-background-color: #ffffff;
+}
+
+/* ScrollPane viewport optimization for smoother rendering */
+.smooth-scroll-pane .viewport {
+  -fx-background-color: transparent;
+}
+
+/* Customize scroll bars for better performance and appearance */
+.smooth-scroll-pane .scroll-bar:vertical,
+.smooth-scroll-pane .scroll-bar:horizontal {
+  -fx-background-color: transparent;
+  -fx-opacity: 0.5;
+  -fx-pref-width: 8;
+  -fx-pref-height: 8;
+}
+
+.smooth-scroll-pane .scroll-bar:vertical .thumb,
+.smooth-scroll-pane .scroll-bar:horizontal .thumb {
+  -fx-background-color: #1a1a1a; /* Matches your header/footer color */
+  -fx-background-radius: 5;
+}
+
+.smooth-scroll-pane .scroll-bar:vertical .thumb:hover,
+.smooth-scroll-pane .scroll-bar:horizontal .thumb:hover {
+  -fx-background-color: #333333; /* Slightly lighter on hover */
+}
+
+/* Reduce rendering lag by disabling unnecessary effects on scroll bars */
+.smooth-scroll-pane .scroll-bar .increment-button,
+.smooth-scroll-pane .scroll-bar .decrement-button {
+  -fx-background-color: transparent;
+  -fx-pref-height: 0;
+  -fx-pref-width: 0;
+}
+
+.smooth-scroll-pane .scroll-bar .increment-arrow,
+.smooth-scroll-pane .scroll-bar .decrement-arrow {
+  -fx-shape: "";
+  -fx-padding: 0;
+}

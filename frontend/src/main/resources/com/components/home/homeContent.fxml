@@ -9,23 +9,30 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0" 
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.HomeContentController"
-            stylesheets="@../../styles/homeContentStyle.css">
-            
-    <!-- Top: Breadcrumb Navigation -->
+<BorderPane xmlns="http://javafx.com/javafx/8.0"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.HomeContentController" stylesheets="@../../styles/homeContentStyle.css">
+
+    <!-- Top: Header with Breadcrumb -->
     <top>
-        <HBox spacing="5" alignment="CENTER_LEFT" styleClass="breadcrumb-bar">
-            <Label text="Computer" styleClass="breadcrumb-text"/>
-            <Label text="PC Parts" styleClass="breadcrumb-highlight"/>
-        </HBox>
+        <VBox styleClass="header">
+            <HBox spacing="5" alignment="CENTER_LEFT" styleClass="breadcrumb-bar">
+                <padding>
+                    <Insets top="10" right="15" bottom="10" left="15"/>
+                </padding>
+                <Label text="Computer" styleClass="breadcrumb-text"/>
+                <Label text=">" styleClass="breadcrumb-text"/>
+                <Label text="PC Parts" styleClass="breadcrumb-highlight"/>
+            </HBox>
+        </VBox>
     </top>
-    
+
     <!-- Left: Side Menu -->
     <left>
-        <VBox spacing="10" styleClass="side-menu" prefWidth="200">
-            <Label text="PC Parts" styleClass="menu-title"/>
+        <VBox spacing="10" styleClass="side-menu" prefWidth="220">
+            <padding>
+                <Insets top="20" right="15" bottom="20" left="15"/>
+            </padding>
+            <Label text="Categories" styleClass="menu-title"/>
             <Label text="Processor" styleClass="menu-item"/>
             <Label text="Motherboard" styleClass="menu-item"/>
             <Label text="RAM" styleClass="menu-item"/>
@@ -37,13 +44,22 @@
             <Label text="DVD Writer" styleClass="menu-item"/>
         </VBox>
     </left>
-    
+
     <!-- Center: Scrollable Grid of Products -->
     <center>
         <ScrollPane fitToWidth="true" styleClass="scroll-pane">
             <GridPane fx:id="productGrid" alignment="CENTER" styleClass="product-grid" />
         </ScrollPane>
     </center>
-    
-    
+
+    <!-- Bottom: Footer -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="footer">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="© 2025 MIST MART. All rights reserved." styleClass="footer-text"/>
+        </HBox>
+    </bottom>
+
 </BorderPane>

@@ -3,25 +3,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.ImageView?>
-
-<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/loginStyle.css" fx:controller="com.LoginController">
+<?import javafx.scene.effect.*?>
+<BorderPane xmlns="http://javafx.com/javafx"
+    xmlns:fx="http://javafx.com/fxml" stylesheets="@styles/loginStyle.css" fx:controller="com.LoginController">
     <center>
-        <VBox spacing="30" alignment="CENTER" style="-fx-padding: 50;">
-            <Label text="Welcome to MIST MART" styleClass="title" />
+        <StackPane>
+            <!-- Form content -->
+            <VBox spacing="25" alignment="CENTER" style="-fx-padding: 40;">
+                <!-- Title -->
+                <Label text="Welcome to MIST MART" styleClass="title" />
 
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Email" styleClass="input-label" />
-                <TextField fx:id="emailField" promptText="Enter your Email here" styleClass="input-field" />
+                <!-- Email Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Email" styleClass="input-label" />
+                    <TextField fx:id="emailField" promptText="Enter your email" styleClass="input-field" />
+                </VBox>
+
+                <!-- Password Field -->
+                <VBox spacing="8" alignment="CENTER_LEFT">
+                    <Label text="Password" styleClass="input-label" />
+                    <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="input-field" />
+                </VBox>
+
+                <!-- Forgot Password Link
+                <Label text="Forgot Password?" styleClass="link-label" alignment="CENTER_RIGHT" onMouseClicked="#handleForgotPassword" /> -->
+
+                <!-- Login Button -->
+                <Button fx:id="loginButton" text="Log In" styleClass="primary-button"/>
+
+                <!-- Divider -->
+                <HBox alignment="CENTER">
+                    <Label text=" or " style="-fx-font-size: 17px; -fx-text-fill: #888; -fx-padding: 0 10;" />
+                </HBox>
+
+                <!-- Signup Link -->
+                <Label text="Don't have an account? Sign Up" styleClass="link-label" onMouseClicked="#switchToSignup" />
             </VBox>
-
-            <VBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Password" styleClass="input-label" />
-                <PasswordField fx:id="passwordField" promptText="Enter your Password" styleClass="input-field" />
-            </VBox>
-
-            <Button fx:id="loginButton" text="Log In" styleClass="primary-button"/>
-            <Label text="Don't have any account? Sign Up" styleClass="link-label" onMouseClicked="#switchToSignup" />
-
-        </VBox>
+        </StackPane>
     </center>
 </BorderPane>

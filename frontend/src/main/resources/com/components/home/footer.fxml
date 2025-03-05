@@ -5,24 +5,25 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="footer" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../styles/footerStyle.css">
+<VBox fx:id="footer"
+    xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../../styles/footerStyle.css">
     <!-- Newsletter Signup -->
-    <HBox styleClass="newsletter">
+    <HBox styleClass="newsletter" alignment="CENTER">
         <Label text="✉ Sign Up For Newsletter" styleClass="newsletter-text"/>
         <TextField fx:id="emailField" promptText="Your Email" styleClass="email-field"/>
         <Button text="SUBSCRIBE" styleClass="subscribe-button"/>
     </HBox>
 
     <!-- Footer Content -->
-    <GridPane styleClass="footer-content">
+    <GridPane styleClass="footer-content" alignment="CENTER">
         <!-- Contact Info -->
         <VBox GridPane.columnIndex="0" styleClass="footer-section">
             <Label text="Contact Us" styleClass="footer-heading"/>
             <Label text="MIST MART" styleClass="footer-text"/>
-            <Label text="MIST,Mirpur Cantontmant,Dhaka-1206" styleClass="footer-text"/>
+            <Label text="MIST, Mirpur Cantonment, Dhaka-1206" styleClass="footer-text" wrapText="true"/>
             <Label text="Bangladesh" styleClass="footer-text"/>
             <Label text="+880 1750-249899" styleClass="footer-text"/>
-            <Label text="mistmart@gmail.Com" styleClass="footer-text"/>
+            <Label text="mistmart@gmail.com" styleClass="footer-text"/>
         </VBox>
 
         <!-- Information Links -->
@@ -53,20 +54,6 @@
             <Label text="Headphones" styleClass="footer-text"/>
             <Label text="Smart Watches" styleClass="footer-text"/>
             <Label text="Tablets" styleClass="footer-text"/>
-        </VBox>
-
-        <!-- App Download -->
-        <VBox GridPane.columnIndex="4" styleClass="footer-section">
-            <Label text="Our App" styleClass="footer-heading"/>
-            <Label text="Download our App and get extra 15% Discount on your first Order..!" styleClass="footer-text"/>
-            <HBox styleClass="app-download">
-                <ImageView fitWidth="150" fitHeight="50">
-                    <Image url="@google-play.png"/>
-                </ImageView>
-                <ImageView fitWidth="150" fitHeight="50">
-                    <Image url="@app-store.png"/>
-                </ImageView>
-            </HBox>
         </VBox>
     </GridPane>
 </VBox>

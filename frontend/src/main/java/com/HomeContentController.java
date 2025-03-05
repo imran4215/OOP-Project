@@ -18,21 +18,21 @@ public class HomeContentController implements Initializable {
     private GridPane productGrid;
 
     private final String[][] products = new String[][] {
-        {"Processor", "/com/images/1.jpg"},
-        {"Motherboard", "/com/images/1.jpg"},
-        {"RAM", "/com/images/1.jpg"},
-        {"Hard Disk", "/com/images/1.jpg"},
-        {"SSD", "/com/images/1.jpg"},
-        {"Graphics Card", "/com/images/1.jpg"},
-        {"Mouse", "/com/images/1.jpg"},
-        {"Keyboard", "/com/images/1.jpg"},
-        {"Power Supply", "/com/images/1.jpg"},
-        {"Pendrive", "/com/images/1.jpg"},
-        {"Computer Casing", "/com/images/1.jpg"},
-        {"CPU Cooler", "/com/images/1.jpg"},
-        {"Webcam", "/com/images/1.jpg"},
-        {"DVD Writer", "/com/images/1.jpg"},
-        {"TV Card", "/com/images/1.jpg"},
+            { "Processor", "/com/images/Processor.jpeg" },
+            { "Motherboard", "/com/images/Motherboard.jpeg" },
+            { "RAM", "/com/images/RAM.jpeg" },
+            { "Laptop", "/com/images/Laptop.jpeg" },
+            { "Hard Disk", "/com/images/Hard Disk.jpeg" },
+            { "SSD", "/com/images/SSD.jpg" },
+            { "Graphics Card", "/com/images/Graphics Card.jpeg" },
+            { "Mouse", "/com/images/Mouse.jpeg" },
+            { "Keyboard", "/com/images/Keyboard.jpeg" },
+            { "Power Supply", "/com/images/Power Supply.jpeg" },
+            { "Pendrive", "/com/images/Pendrive.jpeg" },
+            { "Computer Casing", "/com/images/Computer Casing.jpeg" },
+            { "CPU Cooler", "/com/images/CPU Cooler.jpg" },
+            { "Webcam", "/com/images/Webcam.jpeg" },
+            { "DVD Writer", "/com/images/DVD Writer.jpeg" },
     };
 
     @Override

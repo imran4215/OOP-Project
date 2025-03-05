@@ -5,9 +5,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="navbar" xmlns:fx="http://javafx.com/fxml" 
-            fx:controller="com.NavbarController" 
-            stylesheets="@../../styles/navbarStyle.css">
+<BorderPane fx:id="navbar"
+    xmlns:fx="http://javafx.com/fxml" fx:controller="com.NavbarController" stylesheets="@../../styles/navbarStyle.css">
 
     <top>
         <VBox spacing="0">
@@ -20,8 +19,8 @@
 
             <!-- Main Navbar -->
             <HBox id="navbar-main" alignment="CENTER" spacing="20">
-                <Label text="MIST MART." id="brand-logo"  onMouseClicked="#switchToHome" />
-                
+                <Label text="MIST MART." id="brand-logo" onMouseClicked="#switchToHome" />
+
                 <HBox id="search-container" alignment="CENTER" spacing="5">
                     <TextField promptText="Search Product Here..." id="search-field" fx:id="searchField" onAction="#switchToSearchProducts"/>
                     <Button text="🔍 Search" id="search-button" onMouseClicked="#switchToSearchProducts"/>
@@ -29,14 +28,15 @@
 
                 <Pane HBox.hgrow="ALWAYS"/>
 
-                <HBox id="action-buttons" alignment="CENTER" spacing="15">
+                <!-- Action Buttons (Login, Signup, Cart) -->
+                <HBox id="action-buttons" alignment="CENTER_RIGHT" spacing="15" styleClass="action-buttons-container">
+                    <Button text="🛒 ৳0.00" id="cart-btn" styleClass="cart-button"/>
                     <Button text="👤 Log In" id="login-btn" fx:id="loginBtn" onMouseClicked="#switchToLogin"/>
                     <Button text="👤 Sign Up" id="signup-btn" fx:id="signupBtn" onMouseClicked="#switchToSignUp"/>
                     <HBox alignment="CENTER" spacing="12" visible="${usernameLabel.visible}">
-                        <Label fx:id="usernameLabel" textFill="white" styleClass="username-label"/>
+                        <Label fx:id="usernameLabel" textFill="white" styleClass="username-label" onMouseClicked="#switchToUserProfile"/>
                         <Button text="🚪 Log Out" id="logout-btn" onMouseClicked="#logout" styleClass="logout-btn"/>
                     </HBox>
-                    <Button text="🛒 ৳0.00" id="cart-btn" styleClass="cart-button"/>
                 </HBox>
             </HBox>
 

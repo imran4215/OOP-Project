@@ -56,15 +56,46 @@
   -fx-background-color: #e68a00;
 }
 
-#action-buttons .button {
-  -fx-text-fill: white;
-  -fx-background-color: transparent;
-  -fx-font-size: 14px;
+/* Action Buttons Container */
+.action-buttons-container {
+  -fx-alignment: CENTER_RIGHT;
+  -fx-padding: 0; /* Adjust padding to move to the right */
+}
+
+/* Login, Signup, and Cart Buttons */
+#login-btn,
+#signup-btn,
+#cart-btn {
+  -fx-font-size: 16px; /* Slightly bigger font size */
+  -fx-font-weight: bold;
+  -fx-padding: 10px 15px; /* Slightly bigger padding */
+  -fx-background-radius: 5px;
   -fx-cursor: hand;
 }
 
-#action-buttons .button:hover {
+#cart-btn {
+  -fx-padding: 10px 18px;
+}
+
+#login-btn,
+#signup-btn {
+  -fx-text-fill: white;
+  -fx-background-color: transparent;
+}
+
+#login-btn:hover,
+#signup-btn:hover {
   -fx-text-fill: #ff9900;
+  -fx-background-color: rgba(255, 153, 0, 0.1);
+}
+
+#cart-btn {
+  -fx-background-color: #ff9900;
+  -fx-text-fill: white;
+}
+
+#cart-btn:hover {
+  -fx-background-color: #e68a00;
 }
 
 /* Username Label */
@@ -86,7 +117,7 @@
   -fx-border-color: #ff9900;
 }
 
-/* Logout Button  */
+/* Logout Button */
 #logout-btn {
   -fx-text-fill: white;
   -fx-background-color: transparent;
@@ -133,18 +164,4 @@
 
 .nav-btn:hover {
   -fx-text-fill: #ff9900;
-}
-
-.cart-button {
-  -fx-font-size: 18px;
-}
-
-.cart-button .text {
-  -fx-font-size: 24px;
-}
-
-.scroll-bar {
-  -fx-scroll-bar-fade-unit: 10ms;
-  -fx-scroll-bar-fade-duration: 100ms;
-  -fx-scroll-bar-width: 10px;
 }

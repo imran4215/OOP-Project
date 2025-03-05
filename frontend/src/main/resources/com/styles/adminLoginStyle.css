@@ -1,0 +1,105 @@
+/* Root and General Styles */
+.root {
+  -fx-font-family: "Roboto", "Arial", sans-serif;
+  -fx-background-color: linear-gradient(to bottom right, #eceff1, #ffffff);
+}
+
+/* Background Pane for subtle shadow and card effect */
+.background-pane {
+  -fx-background-color: transparent;
+  -fx-padding: 20;
+}
+
+/* Login Container with Card Effect */
+.login-container {
+  -fx-background-color: #ffffff;
+  -fx-background-radius: 15;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 20, 0.2, 0, 5);
+  -fx-padding: 40;
+  -fx-max-width: 400px;
+  -fx-min-width: 350px;
+  -fx-alignment: center;
+}
+
+/* Title Style */
+.title {
+  -fx-font-size: 32px;
+  -fx-font-weight: 700;
+  -fx-text-fill: #1a237e;
+  -fx-padding: 0 0 5 0;
+}
+
+/* Subtitle Style */
+.subtitle {
+  -fx-font-size: 16px;
+  -fx-font-weight: 400;
+  -fx-text-fill: #546e7a;
+  -fx-padding: 0 0 20 0;
+}
+
+/* Input Label Style */
+.input-label {
+  -fx-font-size: 14px;
+  -fx-font-weight: 500;
+  -fx-text-fill: #37474f;
+}
+
+/* Input Group Spacing */
+.input-group {
+  -fx-spacing: 10;
+}
+
+/* Input Field Style */
+.input-field {
+  -fx-font-size: 14px;
+  -fx-padding: 12;
+  -fx-border-color: #e0e0e0;
+  -fx-border-radius: 8;
+  -fx-background-radius: 8;
+  -fx-pref-width: 320px;
+  -fx-background-color: #fafafa;
+  -fx-text-fill: #212121;
+  -fx-prompt-text-fill: #90a4ae;
+  -fx-transition: all 0.3s ease;
+}
+
+.input-field:focused {
+  -fx-border-color: #3f51b5;
+  -fx-border-width: 2px;
+  -fx-background-color: #ffffff;
+  -fx-effect: dropshadow(gaussian, rgba(63, 81, 181, 0.2), 10, 0, 0, 2);
+}
+
+/* Primary Button Style */
+.primary-button {
+  -fx-background-color: #3f51b5;
+  -fx-text-fill: #ffffff;
+  -fx-font-size: 16px;
+  -fx-font-weight: 600;
+  -fx-padding: 12 40;
+  -fx-background-radius: 8;
+  -fx-cursor: hand;
+  -fx-transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  -fx-background-color: #303f9f;
+  -fx-effect: dropshadow(gaussian, rgba(63, 81, 181, 0.3), 15, 0, 0, 3);
+}
+
+.primary-button:pressed {
+  -fx-background-color: #283593;
+}
+
+/* Link Label Style */
+.link-label {
+  -fx-font-size: 14px;
+  -fx-text-fill: #3f51b5;
+  -fx-cursor: hand;
+  -fx-underline: true;
+  -fx-transition: all 0.3s ease;
+}
+
+.link-label:hover {
+  -fx-text-fill: #303f9f;
+}

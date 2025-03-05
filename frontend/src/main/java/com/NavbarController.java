@@ -50,6 +50,11 @@ public class NavbarController {
     }
 
     @FXML
+    private void switchToUserProfile() throws IOException {
+        App.setRoot("userProfile");
+    }
+
+    @FXML
     private void switchToSearchProducts() throws IOException {
         String searchQuery = searchField.getText().trim(); // Trim to remove extra spaces
 
@@ -82,13 +87,13 @@ public class NavbarController {
             loginBtn.setVisible(false);
             signupBtn.setVisible(false);
             usernameLabel.setVisible(true);
-            usernameLabel.setText(Auth.getUsername());  //Set the username label
-            //System.out.println("Username Set: " + Auth.getUsername()); 
+            usernameLabel.setText(Auth.getUsername()); // Set the username label
+            // System.out.println("Username Set: " + Auth.getUsername());
         } else {
             loginBtn.setVisible(true);
             signupBtn.setVisible(true);
             // userAvatar.setVisible(false);
             usernameLabel.setVisible(false);
-        }   
+        }
     }
 }

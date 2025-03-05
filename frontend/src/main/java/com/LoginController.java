@@ -41,24 +41,28 @@ public class LoginController {
     private void handleSignUp() throws IOException {
         String email = emailField.getText();
         String password = passwordField.getText();
-        
 
         // Validate input fields
-        if (email.isEmpty() || password.isEmpty() ) {
+        if (email.isEmpty() || password.isEmpty()) {
             showErrorDialog("Validation Error", "All fields are required.");
             return;
         }
-        
+
+        if (email.equals("admin") && password.equals("admin")) {
+            // Redirect to demo.fxml
+            App.setRoot("adminLogin");
+            return; // No need to proceed to the API call
+        }
+
         // Prepare JSON payload for the API request
         JSONObject jsonPayload = new JSONObject();
         jsonPayload.put("email", email);
         jsonPayload.put("password", password);
-       
+
         // Create the request body
         RequestBody requestBody = RequestBody.create(
                 jsonPayload.toString(),
-                MediaType.get("application/json; charset=utf-8")
-        );
+                MediaType.get("application/json; charset=utf-8"));
 
         // Build the HTTP POST request
         Request request = new Request.Builder()
@@ -79,16 +83,16 @@ public class LoginController {
 
                 // Get the response from backend as a string
                 String responseBody = response.body().string();
-                
+
                 if (response.isSuccessful()) {
                     Platform.runLater(() -> {
                         // Extract the username from the response
                         String username = new JSONObject(responseBody).getJSONObject("user").getString("username");
-                        //System.out.println("Logged in as: " + username);
+                        // System.out.println("Logged in as: " + username);
 
                         // Set the username in the Auth class to indicate that the user is logged in
                         Auth.login(username);
-                        
+
                         showInfoDialog("Success", "Logged In successfully!");
                         try {
                             App.setRoot("home");
@@ -100,7 +104,7 @@ public class LoginController {
                 } else {
                     JSONObject jsonResponse = new JSONObject(responseBody);
                     String errorMessage = jsonResponse.optString("error", "An unknown error occurred");
-                    Platform.runLater(() -> showErrorDialog("Error", errorMessage));    
+                    Platform.runLater(() -> showErrorDialog("Error", errorMessage));
                 }
                 response.close();
             }
@@ -113,7 +117,7 @@ public class LoginController {
     }
 
     private void showErrorDialog(String title, String errorMessage) {
-        
+
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);
