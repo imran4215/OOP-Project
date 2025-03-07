@@ -1,13 +1,17 @@
 package com;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,7 +46,6 @@ public class HomeContentController implements Initializable {
         int row = 0;
         final int columns = 5;
 
-        // Optionally, add spacing directly on the grid if not set in FXML.
         productGrid.setHgap(20);
         productGrid.setVgap(20);
 
@@ -58,14 +61,12 @@ public class HomeContentController implements Initializable {
     }
 
     private VBox createProductCard(String name, String imagePath) {
-        // Create the card container
         VBox card = new VBox(10);
         card.setAlignment(Pos.CENTER);
         card.getStyleClass().add("product-card");
         card.setMinWidth(150);
         card.setMaxWidth(180);
 
-        // Create the image view
         ImageView imageView = new ImageView();
         try {
             URL imageUrl = getClass().getResource(imagePath);
@@ -83,15 +84,29 @@ public class HomeContentController implements Initializable {
         imageView.setFitHeight(100);
         imageView.setPreserveRatio(true);
 
-        // Create the label for the product name
         Label label = new Label(name);
         label.getStyleClass().add("product-label");
         label.setAlignment(Pos.CENTER);
         label.setWrapText(true);
         label.setMaxWidth(140);
 
-        // Add children to the card
         card.getChildren().addAll(imageView, label);
+
+        // Add click event to store product name and redirect to demo.fxml in full
+        // screen
+        card.setOnMouseClicked(event -> {
+            try {
+                // Store the selected product in SharedData
+                SharedData.getInstance().setSelectedProduct(name.toLowerCase());
+
+                // Redirect to categoryProducts.fxml
+                App.setRoot("categoryProducts");
+
+            } catch (Exception e) {
+                System.err.println("Error redirecting to demo.fxml: " + e.getMessage());
+                e.printStackTrace();
+            }
+        });
 
         return card;
     }

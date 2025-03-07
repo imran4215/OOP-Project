@@ -14,7 +14,7 @@ function normalizeProductName(name) {
 }
 
 // Function to find or create a group for a product name
-function findOrCreateGroup(groupedProducts, productName, threshold = 0.9) {
+function findOrCreateGroup(groupedProducts, productName, threshold = 0.85) {
   const normalizedName = normalizeProductName(productName);
   const groupKeys = Object.keys(groupedProducts);
 

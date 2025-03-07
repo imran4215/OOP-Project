@@ -53,13 +53,13 @@
 }
 
 .input-field:focused {
-  -fx-border-color: #00695c;
+  -fx-border-color: #000000;
   -fx-border-width: 2px;
 }
 
 /* Primary Button Style */
 .primary-button {
-  -fx-background-color: #00796b;
+  -fx-background-color: #2a2a2a;
   -fx-text-fill: white;
   -fx-font-size: 18px;
   -fx-font-weight: bold;
@@ -71,7 +71,7 @@
 
 /* Button Hover Style */
 .primary-button:hover {
-  -fx-background-color: #004d40;
+  -fx-background-color: #000000;
   -fx-transform: scale(1.05);
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 0, 4, 8, 0);
 }

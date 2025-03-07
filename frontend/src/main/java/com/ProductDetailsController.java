@@ -6,11 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.ArrayList;
@@ -18,17 +20,24 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProductDetailsController {
-    @FXML private ImageView bigProductImage;
-    @FXML private Text bigProductTitle;
-    @FXML private Text bigProductSource;
-    @FXML private Button bigProductPrice;
-    @FXML private VBox productListContainer;
+    @FXML
+    private ImageView bigProductImage;
+    @FXML
+    private Text bigProductTitle;
+    @FXML
+    private Text bigProductSource;
+    @FXML
+    private Button bigProductPrice;
+    @FXML
+    private VBox productListContainer;
 
     public void initialize() {
-        // Sample JSON Data
         String jsonData = SharedData.getInstance().getSelectedProductData();
-        // Parse and sort products
-        updateUI(parseAndSortProducts(jsonData));
+        if (jsonData != null && !jsonData.isEmpty()) {
+            updateUI(parseAndSortProducts(jsonData));
+        } else {
+            bigProductTitle.setText("No product data available");
+        }
     }
 
     private List<JSONObject> parseAndSortProducts(String jsonData) {
@@ -37,76 +46,108 @@ public class ProductDetailsController {
         for (int i = 0; i < jsonArray.length(); i++) {
             productList.add(jsonArray.getJSONObject(i));
         }
-        // Sort products by price (ascending order)
-        productList.sort(Comparator.comparingInt(p -> Integer.parseInt(p.getString("productPrice").replace(",", ""))));
+        productList.sort(Comparator.comparingDouble(p -> {
+            String price = p.optString("productPrice", "").replace(",", "").trim();
+            try {
+                return price.isEmpty() ? Double.MAX_VALUE : Double.parseDouble(price);
+            } catch (NumberFormatException e) {
+                return Double.MAX_VALUE;
+            }
+        }));
         return productList;
     }
 
     private void updateUI(List<JSONObject> products) {
-        if (products.isEmpty()) return;
+        if (products.isEmpty()) {
+            bigProductTitle.setText("No products available");
+            return;
+        }
 
-        // Get the lowest-priced product for the big section
         JSONObject lowestPriceProduct = products.get(0);
-        bigProductImage.setImage(new Image(lowestPriceProduct.getString("productImage")));
-        bigProductTitle.setText(lowestPriceProduct.getString("productName"));
-        bigProductSource.setText(lowestPriceProduct.getString("source"));
-        bigProductPrice.setText("TK " + lowestPriceProduct.getString("productPrice"));
+        bigProductImage.setImage(loadImage(lowestPriceProduct.optString("productImage", "")));
+        bigProductTitle.setText(truncateText(lowestPriceProduct.optString("productName", "Unnamed Product"), 50));
+        bigProductSource.setText(lowestPriceProduct.optString("source", "Unknown Source"));
+        String price = lowestPriceProduct.optString("productPrice", "N/A");
+        bigProductPrice.setText("Tk. " + (price.isEmpty() ? "N/A" : price));
+        bigProductPrice.setOnAction(event -> openUrl(lowestPriceProduct.optString("productDetails", "")));
 
-        // Populate additional products dynamically
         productListContainer.getChildren().clear();
+        productListContainer.setSpacing(10); // Reduced spacing
+
         for (int i = 1; i < products.size(); i++) {
             JSONObject product = products.get(i);
 
-            // Create a product row
-            HBox productRow = new HBox(20);
+            HBox productRow = new HBox(15); // Reduced spacing
             productRow.getStyleClass().add("product-row");
 
-            // Product Image
-            ImageView productImage = new ImageView(new Image(product.getString("productImage")));
-            productImage.setFitHeight(80);
+            ImageView productImage = new ImageView(loadImage(product.optString("productImage", "")));
+            productImage.setFitHeight(80); // Smaller image
             productImage.setFitWidth(80);
             productImage.setPreserveRatio(true);
             addHoverEffect(productImage);
 
-            // Product Details (Source and Title)
-            VBox productDetails = new VBox(5);
-            Text source = new Text(product.getString("source"));
+            VBox productDetails = new VBox(5); // Reduced vertical spacing
+            Text source = new Text(product.optString("source", "Unknown Source"));
             source.getStyleClass().add("company-name");
-            Text title = new Text(product.getString("productName"));
+            Text title = new Text(product.optString("productName", "Unnamed Product"));
             title.getStyleClass().add("product-title");
+            title.setWrappingWidth(200); // Reduced wrapping width
             productDetails.getChildren().addAll(source, title);
+            HBox.setHgrow(productDetails, Priority.ALWAYS);
 
-            // Buttons (Price and View More)
-            Button priceButton = new Button("TK " + product.getString("productPrice"));
+            String fullPrice = "Tk. " + product.optString("productPrice", "N/A");
+            Button priceButton = new Button(fullPrice);
             priceButton.getStyleClass().add("price-button");
+            priceButton.setMinWidth(100); // Smaller minimum width
+            priceButton.setPrefHeight(35); // Smaller height
+            priceButton.setWrapText(true);
             addHoverEffect(priceButton);
 
             Button viewDetailsButton = new Button("View Details");
             viewDetailsButton.getStyleClass().add("view-details-button");
+            viewDetailsButton.setMinWidth(120); // Smaller minimum width
+            viewDetailsButton.setPrefHeight(35); // Smaller height
+            viewDetailsButton.setWrapText(true);
+            viewDetailsButton.setOnAction(event -> openUrl(product.optString("productDetails", "")));
             addHoverEffect(viewDetailsButton);
 
-            // Handle View More button click
-            viewDetailsButton.setOnAction(event -> {
-                String productDetailsURL = product.getString("productDetails");
-                if (productDetailsURL != null && !productDetailsURL.isEmpty()) {
-                    try {
-                        Desktop.getDesktop().browse(new URI(productDetailsURL));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
+            HBox buttons = new HBox(15, priceButton, viewDetailsButton); // Reduced button spacing
+            buttons.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
 
-            HBox buttons = new HBox(10, priceButton, viewDetailsButton);
-            buttons.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
-
-            // Add components to the product row
             productRow.getChildren().addAll(productImage, productDetails, buttons);
             productListContainer.getChildren().add(productRow);
         }
     }
 
-    // Helper method to add hover effects
+    private Image loadImage(String imageUrl) {
+        if (!imageUrl.isEmpty()) {
+            try {
+                return new Image(imageUrl, true);
+            } catch (Exception e) {
+                System.err.println("Failed to load image: " + imageUrl);
+            }
+        }
+        return new Image("https://via.placeholder.com/80?text=No+Image"); // Updated placeholder size
+    }
+
+    private String truncateText(String text, int maxLength) {
+        if (text.length() > maxLength) {
+            return text.substring(0, maxLength - 3) + "...";
+        }
+        return text;
+    }
+
+    private void openUrl(String url) {
+        if (url != null && !url.isEmpty()) {
+            try {
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                System.err.println("Failed to open URL: " + url);
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void addHoverEffect(Button button) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), button);
         scaleTransition.setToX(1.05);
@@ -116,7 +157,6 @@ public class ProductDetailsController {
             scaleTransition.play();
             button.setStyle("-fx-background-color: #1186b4; -fx-text-fill: white;");
         });
-
         button.setOnMouseExited(event -> {
             scaleTransition.stop();
             button.setScaleX(1.0);

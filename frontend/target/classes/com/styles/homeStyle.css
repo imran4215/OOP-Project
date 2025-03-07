@@ -7,7 +7,7 @@
 
 /* Main VBox inside ScrollPane */
 .main-vbox {
-  -fx-background-color: #ffffff;
+  -fx-background-color: #e4e0e0;
 }
 
 /* ScrollPane viewport optimization for smoother rendering */

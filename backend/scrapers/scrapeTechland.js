@@ -32,7 +32,7 @@ async function scrapeTechland(query) {
       });
 
       // Returning `false` breaks out of `.each` loop after 3 products
-      if (products.length === 5) return false;
+      if (products.length === 7) return false;
     });
 
     return products;

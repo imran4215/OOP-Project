@@ -1,6 +1,7 @@
 import { scrapeComputerVillage } from "./scrapeComputerVillage.js";
 import { scrapeComputerVision } from "./scrapeComputerVision.js";
 import { scrapeRyans } from "./scrapeRyans.js";
+import { scrapeSellTech } from "./scrapeSellTech.js";
 import { scrapeSkyland } from "./scrapeSkyLand.js";
 import { scrapeStartTech } from "./scrapeStartTech.js";
 import { scrapeTechland } from "./scrapeTechland.js";
@@ -19,10 +20,8 @@ async function scrapeAllSites(query) {
       Promise.all([
         scrapeTechland(productName),
         scrapeRyans(productName),
-        //scrapeSkyland(productName),
-        //scrapeUltraTech(productName),
-        //scrapeComputerVillage(productName),
-        //scrapeComputerVision(productName),
+        scrapeSkyland(productName),
+        scrapeSellTech(productName),
       ])
     )
   );

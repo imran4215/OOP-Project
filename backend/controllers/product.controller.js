@@ -1,37 +1,50 @@
-import axios from "axios";
 import Product from "../models/product.model.js";
 import { scrapeAndSort } from "../scrapers/scrapeAndSort.js";
 import { demoScrape } from "../scrapers/demoScrape.js";
 
 export const saveProducts = async (req, res) => {
-  try {
-    const { data } = await axios.get(
-      "https://fakestoreapi.com/products?limit=3"
-    );
+  const { query } = req.query;
 
-    data.map(async (product) => {
-      const newProduct = new Product({
-        productName: product.title,
-        productDetails: product.description,
-        productPrice: product.price,
-        productImage: product.image,
-        productCategory: product.category,
-      });
-      await newProduct.save();
+  try {
+    const results = await scrapeAndSort(query);
+
+    const newProducts = new Product({
+      query,
+      data: results,
     });
 
-    res.status(200).json(data);
+    await newProducts.save();
+
+    res
+      .status(201)
+      .json({ message: "Scraped data saved successfully!", newProducts });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    console.error("Error saving scraped data:", error.message);
+    res
+      .status(500)
+      .json({ error: "Failed to save scraped data", details: error.message });
   }
 };
 
 export const getProducts = async (req, res) => {
+  const { query } = req.query;
+
   try {
-    const products = await Product.find();
-    res.status(200).json(products);
+    const products = await Product.findOne({ query });
+
+    if (!products) {
+      return res
+        .status(404)
+        .json({ message: "No products found for this query." });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Products fetched successfully", products });
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res
+      .status(500)
+      .json({ message: "Failed to fetch products", error: error.message });
   }
 };
 

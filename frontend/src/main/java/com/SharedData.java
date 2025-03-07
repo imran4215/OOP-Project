@@ -7,8 +7,10 @@ public class SharedData {
     // The data to be shared in ProductDetailsController
     private String selectedProduct;
 
-    private String selectedUsername = "imran4215";
-    private String selectedOrderId = "67c595cae539291a0e585f1f";
+    private String selectedUsername;
+    private String selectedOrderId;
+
+    private String selectedProduct_ = "Motherboard";
 
     // Singleton instance
     private static final SharedData instance = new SharedData();
@@ -56,5 +58,13 @@ public class SharedData {
 
     public String getSelectedOrderId() {
         return selectedOrderId;
+    }
+
+    public void setSelectedProduct(String selectedProduct) {
+        this.selectedProduct_ = selectedProduct;
+    }
+
+    public String getSelectedProduct() {
+        return selectedProduct_;
     }
 }

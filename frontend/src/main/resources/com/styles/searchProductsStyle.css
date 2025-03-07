@@ -17,7 +17,7 @@
   -fx-hgap: 20px;
   -fx-vgap: 20px;
   -fx-padding: 20px;
-  -fx-background-color: #ffffff; /* White background for a cleaner look */
+  -fx-background-color: #e4e0e0; /* White background for a cleaner look */
   -fx-border-radius: 10px; /* Rounded corners for the grid */
   -fx-effect: dropshadow(
     gaussian,
