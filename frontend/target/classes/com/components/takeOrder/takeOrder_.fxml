@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.TakeOrderController" spacing="20" alignment="CENTER" styleClass="root" stylesheets="@../../styles/takeOrderStyle.css">
+
+    <Text text="Place Your Order" styleClass="title"/>
+
+    <!-- User Info -->
+    <VBox spacing="10" styleClass="section">
+        <Label text="Username"/>
+        <TextField fx:id="usernameField" promptText="Enter username" editable="false"/>
+    </VBox>
+
+    <!-- Product -->
+    <VBox spacing="10" styleClass="section">
+        <Label text="Product"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <VBox spacing="5" styleClass="product-input">
+                <TextField fx:id="titleField" promptText="Product Title" editable="false"/>
+                <TextField fx:id="imageField" promptText="Image URL" editable="false"/>
+                <TextField fx:id="priceField" promptText="Price" editable="false"/>
+                <HBox spacing="10" alignment="CENTER">
+                    <Label text="Quantity:"/>
+                    <Button fx:id="decreaseQtyBtn" text="-" onAction="#decreaseQuantity" styleClass="quantity-btn"/>
+                    <Text fx:id="quantityText" text="1"/>
+                    <Button fx:id="increaseQtyBtn" text="+" onAction="#increaseQuantity" styleClass="quantity-btn"/>
+                </HBox>
+            </VBox>
+        </HBox>
+    </VBox>
+
+    <!-- Address -->
+    <VBox spacing="10" styleClass="section">
+        <Label text="Shipping Address"/>
+        <TextField fx:id="cityField" promptText="City"/>
+        <TextField fx:id="countryField" promptText="Country"/>
+        <TextField fx:id="addressField" promptText="Address"/>
+        <TextField fx:id="postalCodeField" promptText="Postal Code"/>
+        <TextField fx:id="phoneNumberField" promptText="Phone Number"/>
+    </VBox>
+
+    <!-- Total Price -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Total Price:"/>
+        <Text fx:id="totalPriceText" text="s0.00"/>
+    </HBox>
+
+    <!-- Submit Button -->
+    <Button fx:id="submitBtn" text="Place Order" styleClass="submit-btn"/>
+
+    <!-- Status Message -->
+    <Label fx:id="statusLabel" text="" styleClass="status-label"/>
+</VBox>

@@ -1,5 +1,7 @@
 package com;
 
+import java.util.ArrayList;
+
 public class SharedData {
     // The data to be shared in SearchProductsController
     private String searchQuery;
@@ -11,6 +13,9 @@ public class SharedData {
     private String selectedOrderId;
 
     private String selectedProduct_ = "Motherboard";
+
+    // Navigation history for back button functionality
+    private final ArrayList<String> navigationHistory = new ArrayList<>();
 
     // Singleton instance
     private static final SharedData instance = new SharedData();
@@ -66,5 +71,10 @@ public class SharedData {
 
     public String getSelectedProduct() {
         return selectedProduct_;
+    }
+
+    // Getter for navigationHistory (no setter needed since it's managed internally)
+    public ArrayList<String> getNavigationHistory() {
+        return navigationHistory;
     }
 }

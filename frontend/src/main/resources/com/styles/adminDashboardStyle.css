@@ -27,6 +27,7 @@
   -fx-background-color: #c53030;
   -fx-scale-x: 1.02;
   -fx-scale-y: 1.02;
+  -fx-cursor: hand;
 }
 
 /* Sidebar */

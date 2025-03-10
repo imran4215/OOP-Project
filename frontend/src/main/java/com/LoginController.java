@@ -22,17 +22,29 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
-    // Create a new OkHttpClient instance to send HTTP requests
+    @FXML
+    private Button homeButton; // Add this field
+
     private final OkHttpClient client = new OkHttpClient();
 
     @FXML
     private void initialize() {
-        // Set up the action for the Sign Up button
+        // Set up the action for the Login button
         loginButton.setOnAction(event -> {
             try {
                 handleSignUp();
             } catch (IOException e) {
                 showErrorDialog("Error", "Failed to connect to the server.");
+                e.printStackTrace();
+            }
+        });
+
+        // Set up the action for the Home button
+        homeButton.setOnAction(event -> {
+            try {
+                goToHome();
+            } catch (IOException e) {
+                showErrorDialog("Error", "Failed to redirect to Home page.");
                 e.printStackTrace();
             }
         });
@@ -42,35 +54,29 @@ public class LoginController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        // Validate input fields
         if (email.isEmpty() || password.isEmpty()) {
             showErrorDialog("Validation Error", "All fields are required.");
             return;
         }
 
         if (email.equals("admin") && password.equals("admin")) {
-            // Redirect to demo.fxml
             App.setRoot("adminLogin");
-            return; // No need to proceed to the API call
+            return;
         }
 
-        // Prepare JSON payload for the API request
         JSONObject jsonPayload = new JSONObject();
         jsonPayload.put("email", email);
         jsonPayload.put("password", password);
 
-        // Create the request body
         RequestBody requestBody = RequestBody.create(
                 jsonPayload.toString(),
                 MediaType.get("application/json; charset=utf-8"));
 
-        // Build the HTTP POST request
         Request request = new Request.Builder()
                 .url("http://localhost:5000/api/user/login")
                 .post(requestBody)
                 .build();
 
-        // Send the request asynchronously
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -80,19 +86,11 @@ public class LoginController {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-                // Get the response from backend as a string
                 String responseBody = response.body().string();
-
                 if (response.isSuccessful()) {
                     Platform.runLater(() -> {
-                        // Extract the username from the response
                         String username = new JSONObject(responseBody).getJSONObject("user").getString("username");
-                        // System.out.println("Logged in as: " + username);
-
-                        // Set the username in the Auth class to indicate that the user is logged in
                         Auth.login(username);
-
                         showInfoDialog("Success", "Logged In successfully!");
                         try {
                             App.setRoot("home");
@@ -116,8 +114,12 @@ public class LoginController {
         App.setRoot("signup");
     }
 
-    private void showErrorDialog(String title, String errorMessage) {
+    @FXML
+    private void goToHome() throws IOException {
+        App.setRoot("home"); // Redirect to home page
+    }
 
+    private void showErrorDialog(String title, String errorMessage) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
         alert.setHeaderText(null);

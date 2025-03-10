@@ -102,8 +102,8 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private void handleLogout() {
-        LOGGER.info("Logout button clicked");
+    private void handleLogout() throws IOException {
+        App.setRoot("login");
     }
 
     @FXML

@@ -2,7 +2,9 @@ package com;
 
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -14,6 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,6 +33,12 @@ public class ProductDetailsController {
     private Button bigProductPrice;
     @FXML
     private VBox productListContainer;
+    @FXML
+    private Button viewDetailsButton; // New button
+    @FXML
+    private Button buyNowButton;
+
+    private final ArrayList<String> navigationHistory = SharedData.getInstance().getNavigationHistory();
 
     public void initialize() {
         String jsonData = SharedData.getInstance().getSelectedProductData();
@@ -38,6 +47,41 @@ public class ProductDetailsController {
         } else {
             bigProductTitle.setText("No product data available");
         }
+
+        // Set up View Details button action
+        viewDetailsButton.setOnAction(event -> {
+            String jsonData_ = SharedData.getInstance().getSelectedProductData();
+            if (jsonData_ != null && !jsonData_.isEmpty()) {
+                List<JSONObject> products = parseAndSortProducts(jsonData_);
+                if (!products.isEmpty()) {
+                    JSONObject topProduct = products.get(0);
+                    openUrl(topProduct.optString("productDetails", ""));
+                } else {
+                    showAlert("No Details", "No product details URL available.");
+                }
+            } else {
+                showAlert("No Details", "No product data available.");
+            }
+        });
+
+        // Set up Buy Now button action
+        buyNowButton.setOnAction(event -> {
+            try {
+                if (!Auth.isAuthenticated()) {
+                    addToHistory(App.getCurrentRoot());
+                    App.setRoot("login");
+                    return;
+                } else {
+                    String jsonData_ = SharedData.getInstance().getSelectedProductData();
+                    JSONObject lowestPriceProduct = parseAndSortProducts(jsonData_).get(0);
+                    SharedData.getInstance().setSelectedProduct(lowestPriceProduct.toString());
+                    addToHistory(App.getCurrentRoot());
+                    App.setRoot("takeOrder");
+                }
+            } catch (IOException e) {
+                System.err.println("Failed to redirect to takeOrder page: " + e.getMessage());
+            }
+        });
     }
 
     private List<JSONObject> parseAndSortProducts(String jsonData) {
@@ -72,51 +116,90 @@ public class ProductDetailsController {
         bigProductPrice.setOnAction(event -> openUrl(lowestPriceProduct.optString("productDetails", "")));
 
         productListContainer.getChildren().clear();
-        productListContainer.setSpacing(10); // Reduced spacing
+        productListContainer.setSpacing(10);
 
         for (int i = 1; i < products.size(); i++) {
             JSONObject product = products.get(i);
 
-            HBox productRow = new HBox(15); // Reduced spacing
+            HBox productRow = new HBox(15);
             productRow.getStyleClass().add("product-row");
 
             ImageView productImage = new ImageView(loadImage(product.optString("productImage", "")));
-            productImage.setFitHeight(80); // Smaller image
+            productImage.setFitHeight(80);
             productImage.setFitWidth(80);
             productImage.setPreserveRatio(true);
             addHoverEffect(productImage);
 
-            VBox productDetails = new VBox(5); // Reduced vertical spacing
+            VBox productDetails = new VBox(5);
             Text source = new Text(product.optString("source", "Unknown Source"));
             source.getStyleClass().add("company-name");
             Text title = new Text(product.optString("productName", "Unnamed Product"));
             title.getStyleClass().add("product-title");
-            title.setWrappingWidth(200); // Reduced wrapping width
+            title.setWrappingWidth(200);
             productDetails.getChildren().addAll(source, title);
             HBox.setHgrow(productDetails, Priority.ALWAYS);
 
-            String fullPrice = "Tk. " + product.optString("productPrice", "N/A");
+            String priceStr = product.optString("productPrice", "N/A");
+            String fullPrice = "Tk. " + (priceStr.isEmpty() ? "N/A" : priceStr);
             Button priceButton = new Button(fullPrice);
             priceButton.getStyleClass().add("price-button");
-            priceButton.setMinWidth(100); // Smaller minimum width
-            priceButton.setPrefHeight(35); // Smaller height
+            priceButton.setMinWidth(100);
+            priceButton.setPrefHeight(35);
             priceButton.setWrapText(true);
             addHoverEffect(priceButton);
 
-            Button viewDetailsButton = new Button("View Details");
-            viewDetailsButton.getStyleClass().add("view-details-button");
-            viewDetailsButton.setMinWidth(120); // Smaller minimum width
-            viewDetailsButton.setPrefHeight(35); // Smaller height
-            viewDetailsButton.setWrapText(true);
-            viewDetailsButton.setOnAction(event -> openUrl(product.optString("productDetails", "")));
-            addHoverEffect(viewDetailsButton);
+            priceButton.setOnAction(event -> {
+                try {
+                    double priceValue = parsePrice(priceStr);
+                    if (priceStr.equals("N/A") || priceValue == 0) {
+                        showAlert("Product Unavailable", "This product is not available for purchase.");
+                    } else if (!Auth.isAuthenticated()) {
+                        addToHistory(App.getCurrentRoot());
+                        App.setRoot("login");
+                    } else {
+                        SharedData.getInstance().setSelectedProduct(product.toString());
+                        addToHistory(App.getCurrentRoot());
+                        App.setRoot("takeOrder");
+                    }
+                } catch (IOException e) {
+                    System.err.println("Failed to redirect to takeOrder page: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            });
 
-            HBox buttons = new HBox(15, priceButton, viewDetailsButton); // Reduced button spacing
+            Button viewDetailsButtonRow = new Button("View Details");
+            viewDetailsButtonRow.getStyleClass().add("view-details-button");
+            viewDetailsButtonRow.setMinWidth(120);
+            viewDetailsButtonRow.setPrefHeight(35);
+            viewDetailsButtonRow.setWrapText(true);
+            viewDetailsButtonRow.setOnAction(event -> openUrl(product.optString("productDetails", "")));
+            addHoverEffect(viewDetailsButtonRow);
+
+            HBox buttons = new HBox(15, priceButton, viewDetailsButtonRow);
             buttons.setAlignment(javafx.geometry.Pos.CENTER_RIGHT);
 
             productRow.getChildren().addAll(productImage, productDetails, buttons);
             productListContainer.getChildren().add(productRow);
         }
+    }
+
+    private double parsePrice(String priceStr) {
+        if (priceStr == null || priceStr.equals("N/A") || priceStr.trim().isEmpty()) {
+            return 0.0;
+        }
+        try {
+            return Double.parseDouble(priceStr.replace(",", "").trim());
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private Image loadImage(String imageUrl) {
@@ -127,7 +210,7 @@ public class ProductDetailsController {
                 System.err.println("Failed to load image: " + imageUrl);
             }
         }
-        return new Image("https://via.placeholder.com/80?text=No+Image"); // Updated placeholder size
+        return new Image("https://via.placeholder.com/80?text=No+Image");
     }
 
     private String truncateText(String text, int maxLength) {
@@ -145,6 +228,8 @@ public class ProductDetailsController {
                 System.err.println("Failed to open URL: " + url);
                 e.printStackTrace();
             }
+        } else {
+            showAlert("No URL", "No product details URL available.");
         }
     }
 
@@ -176,5 +261,11 @@ public class ProductDetailsController {
             imageView.setScaleX(1.0);
             imageView.setScaleY(1.0);
         });
+    }
+
+    private void addToHistory(String currentPage) {
+        if (currentPage != null && !currentPage.isEmpty()) {
+            navigationHistory.add(currentPage);
+        }
     }
 }

@@ -20,11 +20,14 @@ import org.json.JSONObject;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class CategoryProductsController {
 
     @FXML
     private GridPane gridPane;
+
+    private final ArrayList<String> navigationHistory = SharedData.getInstance().getNavigationHistory();
 
     public void initialize() {
         String selectedProduct = SharedData.getInstance().getSelectedProduct();
@@ -211,6 +214,8 @@ public class CategoryProductsController {
 
     private void switchToProductDetails(JSONArray productEntries) throws IOException {
         SharedData.getInstance().setSelectedProductData(productEntries.toString());
+        // Add the current page to history before switching
+        addToHistory(App.getCurrentRoot());
         App.setRoot("productDetails");
     }
 
@@ -255,5 +260,11 @@ public class CategoryProductsController {
             viewMoreButton.setScaleY(1.0);
             viewMoreButton.setStyle("-fx-background-color: #28a745;");
         });
+    }
+
+    private void addToHistory(String currentPage) {
+        if (currentPage != null && !currentPage.isEmpty()) {
+            navigationHistory.add(currentPage);
+        }
     }
 }

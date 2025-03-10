@@ -1,13 +1,16 @@
 import Order from "../models/order.model.js";
+import User from "../models/user.model.js";
 
 // Place a New Order
 export const takeOrder = async (req, res) => {
   try {
-    const { userId, products, totalPrice, address } = req.body;
+    const { username, products, totalPrice, address } = req.body;
 
-    if (!userId || !products || !totalPrice) {
+    if (!username || !products || !totalPrice) {
       return res.status(400).json({ message: "Missing required fields" });
     }
+
+    const userId = await User.findOne({ username: username }).select("_id");
 
     const newOrder = new Order({
       userId,

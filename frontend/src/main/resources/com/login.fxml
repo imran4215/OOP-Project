@@ -25,9 +25,6 @@
                     <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="input-field" />
                 </VBox>
 
-                <!-- Forgot Password Link
-                <Label text="Forgot Password?" styleClass="link-label" alignment="CENTER_RIGHT" onMouseClicked="#handleForgotPassword" /> -->
-
                 <!-- Login Button -->
                 <Button fx:id="loginButton" text="Log In" styleClass="primary-button"/>
 
@@ -38,6 +35,9 @@
 
                 <!-- Signup Link -->
                 <Label text="Don't have an account? Sign Up" styleClass="link-label" onMouseClicked="#switchToSignup" />
+
+                <!-- Go to Home Button -->
+                <Button fx:id="homeButton" text="Go to Home" styleClass="secondary-button" onAction="#goToHome" />
             </VBox>
         </StackPane>
     </center>

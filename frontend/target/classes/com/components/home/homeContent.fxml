@@ -33,15 +33,15 @@
                 <Insets top="20" right="15" bottom="20" left="15"/>
             </padding>
             <Label text="Categories" styleClass="menu-title"/>
-            <Label text="Processor" styleClass="menu-item"/>
-            <Label text="Motherboard" styleClass="menu-item"/>
-            <Label text="RAM" styleClass="menu-item"/>
-            <Label text="Hard Disk" styleClass="menu-item"/>
-            <Label text="SSD" styleClass="menu-item"/>
-            <Label text="Graphics Card" styleClass="menu-item"/>
-            <Label text="Mouse" styleClass="menu-item"/>
-            <Label text="Keyboard" styleClass="menu-item"/>
-            <Label text="DVD Writer" styleClass="menu-item"/>
+            <Label fx:id="processorLabel" text="Processor" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="motherboardLabel" text="Motherboard" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="ramLabel" text="RAM" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="hardDiskLabel" text="Hard Disk" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="ssdLabel" text="SSD" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="graphicsCardLabel" text="Graphics Card" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="mouseLabel" text="Mouse" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="keyboardLabel" text="Keyboard" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
+            <Label fx:id="dvdWriterLabel" text="DVD Writer" styleClass="menu-item" onMouseClicked="#handleCategoryClick"/>
         </VBox>
     </left>
 

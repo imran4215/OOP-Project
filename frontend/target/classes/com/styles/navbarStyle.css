@@ -165,3 +165,18 @@
 .nav-btn:hover {
   -fx-text-fill: #ff9900;
 }
+
+/* Back Button */
+.back-btn {
+  -fx-background-color: transparent;
+  -fx-text-fill: white;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-padding: 5px 10px;
+  -fx-cursor: hand;
+}
+
+.back-btn:hover {
+  -fx-background-color: #333;
+  -fx-text-fill: #ff9900;
+}

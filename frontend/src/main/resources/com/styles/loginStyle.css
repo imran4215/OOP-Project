@@ -94,3 +94,20 @@
 .link-label:hover {
   -fx-text-fill: #303f9f;
 }
+
+.secondary-button {
+  -fx-background-color: #f0f0f0;
+  -fx-text-fill: #333333;
+  -fx-font-size: 14px;
+  -fx-padding: 10 20;
+  -fx-border-radius: 5;
+  -fx-background-radius: 5;
+  -fx-border-color: #888888;
+  -fx-border-width: 1;
+}
+
+.secondary-button:hover {
+  -fx-cursor: hand;
+  -fx-background-color: #000000;
+  -fx-text-fill: #ffffff;
+}

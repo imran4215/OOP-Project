@@ -30,7 +30,6 @@
 
                 <!-- Action Buttons (Login, Signup, Cart) -->
                 <HBox id="action-buttons" alignment="CENTER_RIGHT" spacing="15" styleClass="action-buttons-container">
-                    <!-- <Button text="🛒 ৳0.00" id="cart-btn" styleClass="cart-button"/> -->
                     <Button text="👤 Log In" id="login-btn" fx:id="loginBtn" onMouseClicked="#switchToLogin"/>
                     <Button text="👤 Sign Up" id="signup-btn" fx:id="signupBtn" onMouseClicked="#switchToSignUp"/>
                     <HBox alignment="CENTER" spacing="12" visible="${usernameLabel.visible}">
@@ -42,11 +41,17 @@
 
             <!-- Bottom Navbar -->
             <HBox id="bottom-navbar" alignment="CENTER" spacing="20">
-                <Button text="☰ SHOP CATEGORIES" id="categories-btn"/>
-                <Button text="HOME" styleClass="nav-btn" onMouseClicked="#switchToHome"/>
-                <Button text="OUR STORE" styleClass="nav-btn"/>
-                <Button text="BLOGS" styleClass="nav-btn"/>
-                <Button text="CONTACT US" styleClass="nav-btn" onMouseClicked="#switchToContactUs"/>
+                <Button fx:id="backButton" text="⬅ Back" styleClass="nav-btn" onAction="#goBack" />
+                <Pane HBox.hgrow="ALWAYS"/>
+                <!-- Spacer to push center buttons -->
+                <HBox alignment="CENTER" spacing="20">
+                    <Button text="☰ SHOP CATEGORIES" id="categories-btn"/>
+                    <Button text="HOME" styleClass="nav-btn" onMouseClicked="#switchToHome"/>
+                    <Button text="OUR STORE" styleClass="nav-btn"/>
+                    <Button text="BLOGS" styleClass="nav-btn"/>
+                    <Button text="CONTACT US" styleClass="nav-btn" onMouseClicked="#switchToContactUs"/>
+                </HBox>
+                <Pane HBox.hgrow="ALWAYS"/>
             </HBox>
         </VBox>
     </top>

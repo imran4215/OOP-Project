@@ -136,6 +136,28 @@ ScrollPane .scroll-bar:horizontal {
 }
 
 /* View More Button */
+.view-details-button-big {
+  -fx-text-fill: #2980b9;
+  -fx-background-color: transparent;
+  -fx-border-color: #2980b9;
+  -fx-border-radius: 5px;
+  -fx-font-size: 16px;
+  -fx-padding: 8px 15px;
+  -fx-cursor: hand;
+  -fx-wrap-text: true;
+  -fx-text-alignment: center;
+  -fx-transition: -fx-background-color 0.3s ease, -fx-text-fill 0.3s ease,
+    -fx-scale-x 0.3s ease, -fx-scale-y 0.3s ease;
+}
+
+.view-details-button-big:hover {
+  -fx-background-color: #2980b9;
+  -fx-text-fill: #ffffff;
+  -fx-scale-x: 1.02;
+  -fx-scale-y: 1.02;
+}
+
+/* View More Button */
 .view-details-button {
   -fx-text-fill: #2980b9;
   -fx-background-color: transparent;

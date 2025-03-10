@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane fitToWidth="true"
+    xmlns:fx="http://javafx.com/fxml" styleClass="smooth-scroll-pane" pannable="true" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
+    <VBox>
+        <!-- Include Header -->
+        <fx:include source="components/home/navbar.fxml"/>
+
+        <!-- Main Content -->
+        <fx:include source="components/takeOrder/takeOrder_.fxml"/>
+
+        <!-- Include Footer -->
+        <fx:include source="components/home/footer.fxml"/>
+    </VBox>
+</ScrollPane>

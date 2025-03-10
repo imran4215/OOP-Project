@@ -1,25 +1,44 @@
 package com;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HomeContentController implements Initializable {
 
+    private final ArrayList<String> navigationHistory = SharedData.getInstance().getNavigationHistory();
+
     @FXML
     private GridPane productGrid;
+
+    // Sidebar category labels
+    @FXML
+    private Label processorLabel;
+    @FXML
+    private Label motherboardLabel;
+    @FXML
+    private Label ramLabel;
+    @FXML
+    private Label hardDiskLabel;
+    @FXML
+    private Label ssdLabel;
+    @FXML
+    private Label graphicsCardLabel;
+    @FXML
+    private Label mouseLabel;
+    @FXML
+    private Label keyboardLabel;
+    @FXML
+    private Label dvdWriterLabel;
 
     private final String[][] products = new String[][] {
             { "Processor", "/com/images/Processor.jpeg" },
@@ -92,22 +111,37 @@ public class HomeContentController implements Initializable {
 
         card.getChildren().addAll(imageView, label);
 
-        // Add click event to store product name and redirect to demo.fxml in full
-        // screen
         card.setOnMouseClicked(event -> {
             try {
-                // Store the selected product in SharedData
                 SharedData.getInstance().setSelectedProduct(name.toLowerCase());
-
-                // Redirect to categoryProducts.fxml
+                addToHistory(App.getCurrentRoot());
                 App.setRoot("categoryProducts");
-
             } catch (Exception e) {
-                System.err.println("Error redirecting to demo.fxml: " + e.getMessage());
+                System.err.println("Error redirecting to categoryProducts.fxml: " + e.getMessage());
                 e.printStackTrace();
             }
         });
 
         return card;
+    }
+
+    @FXML
+    private void handleCategoryClick(javafx.scene.input.MouseEvent event) {
+        try {
+            Label clickedLabel = (Label) event.getSource();
+            String category = clickedLabel.getText().toLowerCase();
+            SharedData.getInstance().setSelectedProduct(category);
+            addToHistory(App.getCurrentRoot());
+            App.setRoot("categoryProducts");
+        } catch (Exception e) {
+            System.err.println("Error redirecting to categoryProducts.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void addToHistory(String currentPage) {
+        if (currentPage != null && !currentPage.isEmpty()) {
+            navigationHistory.add(currentPage);
+        }
     }
 }
